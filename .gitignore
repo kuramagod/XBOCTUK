@@ -1,8 +1,7 @@
-*.pyc
-*.pyo
-*.db
-.env
 .venv/
-.idea/
-.vscode/
+
 __pycache__/
+*.pyc
+
+.vscode/
+.idea/
