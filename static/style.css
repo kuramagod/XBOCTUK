@@ -1,0 +1,357 @@
+:root {
+    /* Цвета */
+    --bg-main: #FFB238;
+    --card-bg: #FF773D;
+    --bg-button: #f78500;
+    --text-main: #000000;
+
+    /* z-index */
+    --z-base: 1;
+    --z-header: 100;
+    --z-dropdown: 200;
+    --z-modal: 1000;
+    --z-overlay: 1100;
+    --z-tooltip: 1200;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-main);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Хедер */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-header);
+    background-color: var(--bg-main);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+.header_grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    column-gap: 30px;
+}
+
+.header_logo {
+    grid-column: 1 / 4;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header_nav {
+    grid-column: 4 / 13;
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+}
+
+.header_nav a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.header_nav a:hover {
+    color: #333333;
+}
+
+/* Мобильный хедер */
+.burger {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.mobile_menu {
+    padding-top: 80px;
+    position: fixed;
+    inset: 0;   
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: var(--z-overlay);
+}
+
+.mobile_menu.active {
+    display: block;
+}
+
+.mobile_nav {
+    background: var(--bg-main);
+    margin: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.mobile_nav a {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    color: #000;
+    border-bottom: 1px solid #000;
+}
+
+.mobile_nav a:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 1060px) {
+    .header_grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: stretch;
+        column-gap: 15px;
+    }
+
+    .header_nav {
+        display: none;
+    }
+
+    .burger {
+        display: block;
+        grid-column: 12 / 13;
+        justify-self: end;
+    }
+
+    .header_logo {
+        grid-column: 1 / 11;
+    }
+}
+
+/* Основной заголовок */
+.main_title {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+
+.main_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(4px);
+}
+
+.main_content {
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    color: #000000;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.first_info {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.second_info {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/* Мобильная адаптация текста */
+@media (max-width: 1060px) {
+    .first_info {
+        font-size: 16px;
+    }
+    .second_info {
+        font-size: 12px;
+    }
+}
+
+.title {
+    font-size: 42px;
+}
+
+@media (max-width: 1060px) {
+    .title {    
+        font-size: 20px;
+    }
+}
+
+/* Раздел О нас */
+.about_us_grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 30px;
+}
+
+.first_about_image {
+    grid-column: 1 / 6;
+    grid-row: 1;
+}
+
+.first_about_product {
+    grid-column: 6 / 13;
+    grid-row: 1;
+    font-size: 24px;
+}
+
+.second_about_product {
+    grid-column: 1 / 8;
+    font-size: 24px;
+    grid-row: 2;
+}
+
+.second_about_image {
+    grid-column: 8 / 13;
+    grid-row: 2;
+}
+
+@media (max-width: 1060px) {
+    .about_us_grid {
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+    }
+
+    .first_about_image,
+    .second_about_image,
+    .first_about_product,
+    .second_about_product {
+        grid-column: 1 / -1;
+        grid-row: auto;
+    }
+
+    .first_about_image,
+    .second_about_image {
+        width: 100%;
+        height: auto;
+    }
+
+    .first_about_product,
+    .second_about_product {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+}
+
+/* Раздел Хиты продаж */
+.bestsellers_flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -21px;
+    width: calc(100% + 21px);
+}
+
+.product_card {
+    width: calc(25% - 21px);
+    margin-left: 21px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #FF773D;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.product_card img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+.product_card p {
+    margin: 0px;
+}
+
+.price {
+    font-weight: 600;
+}
+
+.details_button {
+    margin-top: 20px;
+    background-color: #000000;
+    color: #FFFFFF;
+    border-radius: 15px;
+    padding: 10px;
+    border: 0;
+}
+
+/* Адаптация карточек */
+@media (max-width: 1060px) {
+    .product_card {
+        width: calc(50% - 21px);
+        font-size: 16px;
+    }
+    .details_button {
+        font-size: 14px;
+    }
+}
+
+/* Раздел "Каталог товаров" */
+.catalog {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.catalog_btn {
+    background-color: var(--bg-button);
+    color: #fff;
+    border-radius: 20px;
+    border: 0;
+    padding: 5px 14px;
+    font-size: 20px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.2s;
+}
+
+.catalog_btn:hover {
+    background-color: #dd7702;
+}
+
+.catalog_btn.active {
+    background-color: #000;
+}
+
+/* Адаптация скрола категорий */
+@media (max-width: 1060px) {
+    .catalog {
+        justify-content: flex-start;
+        overflow-x: auto;
+        gap: 10px;
+        padding-bottom: 10px;
+        scrollbar-width: none;
+    }
+
+    .catalog::-webkit-scrollbar {
+        display: none;
+    }
+
+    .catalog_btn {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}
