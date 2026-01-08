@@ -171,8 +171,80 @@
                 </div>
             </div>
         </section>
+        <section id="our_production">
+            <div class="container">
+                <p class="title">Наше производство</p>
+                <div class="slider">
+                    <div class="slides">
+                        <div class="slide active">
+                            <img src="/static/image/manufacturer1.jpg" alt="Изображение производства">
+                            <div class="slide_content">
+                                <p>Мы используем безопасные и гипоаллергенные материалы, чтобы ваши кошки чувствовали комфорт каждый день.</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="/static/image/manufacturer2.jpg" alt="Изображение производства">
+                            <div class="slide_content">
+                                <p>В работе используем только нетоксичные и гипоаллергенные материалы, подходящие для ежедневного использования.</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="/static/image/manufacturer3.jpg" alt="Изображение производства">
+                            <div class="slide_content">
+                                <p>Мы проверяем каждое изделие вручную, чтобы оно было безопасным и долговечным для питомца.</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="/static/image/manufacturer4.jpg" alt="Изображение производства">
+                            <div class="slide_content">
+                                <p>Мы создаём товары с любовью, ориентируясь на комфорт, игру и здоровье кошек.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="slider_btn prev">‹</button>
+                    <button class="slider_btn next">›</button>
+
+                    <div class="dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
     </main>
     <script>
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let index = 0;
+
+        function showSlide(i) {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+
+            slides[i].classList.add('active');
+            dots[i].classList.add('active');
+        }
+
+        document.querySelector('.next').onclick = () => {
+            index = (index + 1) % slides.length;
+            showSlide(index);
+        };
+
+        document.querySelector('.prev').onclick = () => {
+            index = (index - 1 + slides.length) % slides.length;
+            showSlide(index);
+        };
+
+        dots.forEach((dot, i) => {
+            dot.onclick = () => {
+                index = i;
+                showSlide(index);
+            };
+        });
         const burger = document.getElementById('burger');
         const menu = document.getElementById('mobileMenu');
 
