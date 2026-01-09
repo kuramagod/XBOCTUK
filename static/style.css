@@ -2,11 +2,14 @@
     /* Цвета */
     --bg-main: #FFB238;
     --card-bg: #FF773D;
-    --bg-button: #f78500;
     --text-main: #ffffff;
+    --form-bg: #D45E2C;
+    --form-ph: #FFA57F;
+    --bg-btn: #000000;
 
     /* z-index */
     --z-base: 1;
+    --z-blur: 2;
     --z-header: 100;
     --z-dropdown: 200;
     --z-modal: 1000;
@@ -272,7 +275,7 @@ header {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background-color: #FF773D;
+    background-color: var(--card-bg);
     border-radius: 10px;
     font-size: 20px;
 }
@@ -294,7 +297,7 @@ header {
 
 .details_button {
     margin-top: 20px;
-    background-color: #000000;
+    background-color: var(--bg-btn);
     color: #FFFFFF;
     border-radius: 15px;
     padding: 10px;
@@ -321,7 +324,7 @@ header {
 }
 
 .catalog_btn {
-    background-color: var(--bg-button);
+    background-color: #F78500;
     color: #fff;
     border-radius: 20px;
     border: 0;
@@ -337,7 +340,7 @@ header {
 }
 
 .catalog_btn.active {
-    background-color: #000;
+    background-color: var(--bg-btn);
 }
 
 /* Адаптация скрола категорий */
@@ -396,7 +399,7 @@ header {
 .slide_content {
     position: absolute;
     inset: 0;
-    z-index: var(--z-overlay);
+    z-index: var(--z-blur);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -418,7 +421,7 @@ header {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: var(--z-overlay);
+    z-index: var(--z-blur);
 
     display: flex;
     justify-content: center;
@@ -441,7 +444,7 @@ header {
 
 .dots {
     position: absolute;
-    z-index: var(--z-overlay);
+    z-index: var(--z-blur);
     bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
@@ -476,4 +479,119 @@ header {
 
     .slider_btn.prev { left: 1px; }
     .slider_btn.next { right: 1px; }
+}
+
+/* Раздел "Отзывы" */
+.reviews_flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.review {
+    position: relative;
+    flex-direction: column;
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    width: calc(33.333% - 20px);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.quote {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.review_username { font-size: 24px; }
+.review_text { font-size: 20px; }
+
+/* Подраздел "Оставьте свой отзыв" */
+.leave_review {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+.leave_review_title {
+    text-align: center;
+    font-size: 32px;
+    color: var(--text-main);
+    margin-bottom: 30px;
+}
+
+.review_form {
+    max-width: 900px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.review_form label {
+    color: var(--text-main);
+    margin-bottom: -8px;
+    font-size: 24px;
+}
+
+.review_form input,
+.review_form textarea {
+    width: 100%;
+    background: var(--form-bg);
+    border: none;
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: var(--text-main);
+    font-size: 24px;
+
+    outline: none;
+}
+
+.review_form textarea {
+    min-height: 160px;
+    resize: none;
+}
+
+.review_form input::placeholder,
+.review_form textarea::placeholder {
+    color: var(--form-ph);
+}
+
+.review_form button {
+    align-self: center;
+    padding: 12px 40px;
+    min-width: 500px;
+    background: var(--bg-btn);
+    color: var(--text-main);
+    border-radius: 10px;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 1060px) {
+    .review {
+        width: 100%;
+    }
+    .review_username { font-size: 20px; }
+    .review_text { font-size: 14px }
+
+    .review_form button {
+        min-width: 200px;
+    }
+
+    .leave_review_title, .review_form button  { font-size: 20px; }
+    .review_form label, .review_form input, .review_form textarea { font-size: 16px; }
 }
