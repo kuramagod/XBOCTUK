@@ -82,7 +82,7 @@
                         <img width="215" height="173" src="/static/image/hit1.png" alt="Изображение товара">
                         <p class="price">85 ₽</p>
                         <p class="description">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
-                        <button class="details_button">Подробнее</button>
+                        <button class="details_button" onclick="openModal()">Подробнее</button>
                     </div>
                     <div class="product_card">
                         <img width="215" height="173" src="/static/image/hit2.png" alt="Изображение товара">
@@ -327,6 +327,22 @@
                 </div>
             </div>
         </footer>
+        <div id="myModal" class="modal_overlay">
+            <div class="modal_content">
+                <svg class="close_btn" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.41421 18.4143C1.86193 18.9666 0.9665 18.9666 0.414215 18.4143C-0.13807 17.862 -0.13807 16.9666 0.414215 16.4143L3.41422 13.4143C5.62336 11.2052 5.62335 7.62344 3.41421 5.41431L0.414215 2.41431C-0.13807 1.86202 -0.13807 0.966592 0.414215 0.414307C0.9665 -0.137978 1.86193 -0.137978 2.41422 0.414307L5.41422 3.41431C7.62336 5.62345 11.2051 5.62345 13.4142 3.41431L16.4142 0.414306C16.9665 -0.137979 17.8619 -0.137978 18.4142 0.414307C18.9665 0.966592 18.9665 1.86202 18.4142 2.41431L15.4142 5.41431C13.2051 7.62345 13.2051 11.2052 15.4142 13.4143L18.4142 16.4143C18.9665 16.9666 18.9665 17.862 18.4142 18.4143C17.8619 18.9666 16.9665 18.9666 16.4142 18.4143L13.4142 15.4143C11.2051 13.2052 7.62335 13.2052 5.41421 15.4143L2.41421 18.4143Z" fill="black"/>
+                </svg>
+                <img width="700" height="400" src="/static/image/hit1.png" alt="Изображение товара">
+                <p class="price_modal">85 ₽</p>
+                <p class="description_modal">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
+                <p class="extra_info">Код товара: 1001</p>
+                <p class="extra_info">Категория: Корм</p>
+                <p class="extra_info">Бренд: Хвостик</p>
+                <p class="extra_info">Страна производства: Россия</p>
+                <p class="extra_info">Материал: Натуральные материалы</p>
+                <p class="extra_info">Возраст питомца: Для всех возрастов</p>
+            </div>
+        </div>
     </main>
     <script>
         const slides = document.querySelectorAll('.slide');
@@ -368,6 +384,30 @@
             menu.classList.remove('active');
         });
 
+        // Модальное окно
+        const modal = document.getElementById('myModal');
+        const closeBtn = modal.querySelector('.close_btn');
+
+        function openModal() {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+
+
+        closeBtn.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
 
         const buttons = document.querySelectorAll('.catalog_btn');
 
@@ -379,7 +419,7 @@
 
                 const category = btn.dataset.category;
 
-                loadProducts(category);
+                // loadProducts(category);
             });
         });
 

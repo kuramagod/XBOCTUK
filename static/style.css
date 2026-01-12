@@ -2,7 +2,8 @@
     /* Цвета */
     --bg-main: #FFB238;
     --card-bg: #FF773D;
-    --text-main: #ffffff;
+    --text-main: #000000;
+    --text-second: #FFFFFF;
     --form-bg: #D45E2C;
     --form-ph: #FFA57F;
     --bg-btn: #000000;
@@ -150,7 +151,7 @@ header {
     width: 100%;
     height: 500px;
     overflow: hidden;
-    color: var(--text-main);
+    color: var(--text-second);
 }
 
 .main_image {
@@ -175,11 +176,13 @@ header {
 .first_info {
     font-size: 32px;
     margin-bottom: 10px;
+    color: var(--text-second);;
 }
 
 .second_info {
     font-size: 20px;
     font-weight: 400;
+    color: var(--text-second);
 }
 
 /* Мобильная адаптация текста */
@@ -214,6 +217,7 @@ header {
 .first_about_image {
     grid-column: 1 / 6;
     grid-row: 1;
+    border-radius: 10px;
 }
 
 .first_about_product {
@@ -231,6 +235,7 @@ header {
 .second_about_image {
     grid-column: 8 / 13;
     grid-row: 2;
+    border-radius: 10px;
 }
 
 @media (max-width: 1060px) {
@@ -303,6 +308,7 @@ header {
     border-radius: 15px;
     padding: 10px;
     border: 0;
+    cursor: pointer;
 }
 
 /* Адаптация карточек */
@@ -493,7 +499,7 @@ header {
     position: relative;
     flex-direction: column;
     background-color: var(--card-bg);
-    color: var(--text-main);
+    color: var(--text-second);
     width: calc(33.333% - 20px);
     border-radius: 10px;
     padding: 20px;
@@ -528,7 +534,7 @@ header {
 .leave_review_title {
     text-align: center;
     font-size: 32px;
-    color: var(--text-main);
+    color: var(--text-second);
     margin-bottom: 30px;
 }
 
@@ -542,7 +548,7 @@ header {
 }
 
 .review_form label {
-    color: var(--text-main);
+    color: var(--text-second);
     margin-bottom: -8px;
     font-size: 24px;
 }
@@ -575,7 +581,7 @@ header {
     padding: 12px 40px;
     min-width: 500px;
     background: var(--bg-btn);
-    color: var(--text-main);
+    color: var(--text-second);
     border-radius: 10px;
     font-size: 24px;
     border: none;
@@ -609,7 +615,7 @@ header {
     flex-direction: column;
     padding: 20px;
     background-color: var(--card-bg);
-    color: var(--text-main);
+    color: var(--text-second);
     width: calc(33.333% - 20px);
     border-radius: 10px;
     font-size: 26px;
@@ -700,5 +706,84 @@ footer {
     .footer_copyright {
         text-align: center;
         order: 99;
+    }
+}
+
+/* Модальное окно для товаров */
+.modal_overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Контент модалки */
+.modal_content {
+    position: relative;
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 900px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.close_btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.close_btn:hover {
+    opacity: 1;
+}
+
+.modal_content img {
+    align-self: center;
+    object-fit: contain;
+}
+
+.price_modal {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.description_modal {
+    font-size: 30px;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.extra_info {
+    font-size: 20px;
+    color: rgba(0,0,0,0.55);
+    margin: 0;
+}
+
+@media (max-width: 1060px) {
+    .modal_content {
+        max-width: 345px;
+    }
+    .price_modal {
+        font-size: 24px;
+    }
+    .description_modal {
+        font-size: 20px;
+    }
+    .extra_info {
+        font-size: 14px;
+    }
+    .modal_content img {
+        width: 280px;
+        height: 200px;
     }
 }
