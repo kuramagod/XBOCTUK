@@ -6,17 +6,14 @@
     --text-second: #FFFFFF;
     --form-bg: #D45E2C;
     --form-ph: #FFA57F;
-    --bg-btn: #000000;
+    --bg-btn: #070707;
     --bg-footer: #D59734;
 
     /* z-index */
     --z-base: 1;
     --z-blur: 2;
     --z-header: 100;
-    --z-dropdown: 200;
-    --z-modal: 1000;
     --z-overlay: 1100;
-    --z-tooltip: 1200;
 }
 
 * {
@@ -81,7 +78,7 @@ header {
     color: #333333;
 }
 
-/* Мобильный хедер */
+/* Мобильный адаптация хедера */
 .burger {
     display: none;
     font-size: 28px;
@@ -114,7 +111,7 @@ header {
     display: block;
     padding: 20px;
     text-decoration: none;
-    color: #000;
+    color: var(--text-main);
     border-bottom: 1px solid #000;
 }
 
@@ -149,20 +146,30 @@ header {
 .main_title {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 600px;
     overflow: hidden;
     color: var(--text-second);
 }
 
-.main_image {
+.main_image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    backdrop-filter: blur(4px);
+    z-index: var(--z-base);
+}
+
+.main_image img {
+    position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: blur(4px);
 }
 
 .main_content {
     position: absolute;
+    z-index: var(--z-blur);
     top: 50%;
     left: 50%; 
     transform: translate(-50%, -50%);
@@ -238,6 +245,7 @@ header {
     border-radius: 10px;
 }
 
+/* Мобильная адаптация раздела "О нас" */
 @media (max-width: 1060px) {
     .about_us_grid {
         grid-template-columns: 1fr;
@@ -265,7 +273,7 @@ header {
     }
 }
 
-/* Раздел Хиты продаж */
+/* Раздел "Хиты продаж" */
 .bestsellers_flex {
     display: flex;
     flex-wrap: wrap;
@@ -273,6 +281,7 @@ header {
     width: calc(100% + 21px);
 }
 
+/* Карточки товаров */
 .product_card {
     width: calc(25% - 21px);
     margin-left: 21px;
@@ -304,7 +313,7 @@ header {
 .details_button {
     margin-top: 20px;
     background-color: var(--bg-btn);
-    color: #FFFFFF;
+    color: var(--text-second);
     border-radius: 15px;
     padding: 10px;
     border: 0;
@@ -332,7 +341,7 @@ header {
 
 .catalog_btn {
     background-color: #F78500;
-    color: #fff;
+    color: var(--text-second);
     border-radius: 20px;
     border: 0;
     padding: 5px 14px;
@@ -471,7 +480,7 @@ header {
     background: #fff;
 }
 
-/* Мобильная адаптация */
+/* Мобильная адаптация раздела "Наше производство" */
 @media (max-width: 1060px) {
     .slide_content p {
         font-size: 14px;
@@ -588,6 +597,7 @@ header {
     cursor: pointer;
 }
 
+/* Мобильная адаптация раздела "Отзывы" */
 @media (max-width: 1060px) {
     .review {
         width: 100%;
@@ -621,6 +631,7 @@ header {
     font-size: 26px;
 }
 
+/* Мобильная адаптация раздела "Контакты" */
 @media (max-width: 1060px) {
     .contact {
         width: 100%;
@@ -682,6 +693,7 @@ footer {
     margin: 0;
 }
 
+/* Мобильная адапатция подвала */
 @media (max-width: 1060px) {
     .footer_grid {
         grid-template-columns: 1fr;
@@ -752,23 +764,24 @@ footer {
 }
 
 .price_modal {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 600;
     margin: 0;
 }
 
 .description_modal {
-    font-size: 30px;
+    font-size: 28px;
     color: var(--text-main);
     margin: 0;
 }
 
 .extra_info {
-    font-size: 20px;
+    font-size: 16px;
     color: rgba(0,0,0,0.55);
     margin: 0;
 }
 
+/* мобильная адаптация модального окна товара */
 @media (max-width: 1060px) {
     .modal_content {
         max-width: 345px;

@@ -6,8 +6,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}"> -->
-      <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+    <script src="{{ urk_for('static', path='script.js') }}"></script>
+    <!-- <link rel="stylesheet" href="/static/style.css"> -->
+    <!-- <script src="/static/script.js" async></script> -->
     <title>Хвостик</title>
 </head>
 <body>
@@ -50,7 +52,9 @@
     <main>
         <!-- Главная картина -->
         <section class="main_title">
-            <img class="main_image" src="/static/image/bigmainimage.jpg" alt="Главная картина">
+            <div class="main_image">
+                <img src="/static/image/bigmainimage.jpg" alt="Главная картина">
+            </div>
             <div class="main_content container">
                 <p class="first_info">Семейный магазин товаров для кошек</p>
                 <p class="second_info">Лучшее проявление любви к любимцу!</p>
@@ -167,10 +171,10 @@
                         <p class="description">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
                         <button class="details_button">Подробнее</button>
                     </div>
-
                 </div>
             </div>
         </section>
+        <!-- Наше производство -->
         <section id="our_production">
             <div class="container">
                 <p class="title">Наше производство</p>
@@ -214,6 +218,7 @@
                 </div>
             </div>
         </section>
+        <!-- Отзывы -->
         <section id="reviews">
             <div class="container">
                 <p class="title">Отзывы</p>
@@ -267,6 +272,7 @@
                 </div>
             </div>
         </section>
+        <!-- Контакты -->
         <section id="contacts">
             <div class="container">
                 <p class="title">Контакты</p>
@@ -295,6 +301,7 @@
                 </div>
             </div>
         </section>
+        <!-- Подвал -->
         <footer>
             <div class="container">
                 <div class="footer_grid">
@@ -332,7 +339,7 @@
                 <svg class="close_btn" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2.41421 18.4143C1.86193 18.9666 0.9665 18.9666 0.414215 18.4143C-0.13807 17.862 -0.13807 16.9666 0.414215 16.4143L3.41422 13.4143C5.62336 11.2052 5.62335 7.62344 3.41421 5.41431L0.414215 2.41431C-0.13807 1.86202 -0.13807 0.966592 0.414215 0.414307C0.9665 -0.137978 1.86193 -0.137978 2.41422 0.414307L5.41422 3.41431C7.62336 5.62345 11.2051 5.62345 13.4142 3.41431L16.4142 0.414306C16.9665 -0.137979 17.8619 -0.137978 18.4142 0.414307C18.9665 0.966592 18.9665 1.86202 18.4142 2.41431L15.4142 5.41431C13.2051 7.62345 13.2051 11.2052 15.4142 13.4143L18.4142 16.4143C18.9665 16.9666 18.9665 17.862 18.4142 18.4143C17.8619 18.9666 16.9665 18.9666 16.4142 18.4143L13.4142 15.4143C11.2051 13.2052 7.62335 13.2052 5.41421 15.4143L2.41421 18.4143Z" fill="black"/>
                 </svg>
-                <img width="700" height="400" src="/static/image/hit1.png" alt="Изображение товара">
+                <img width="700" height="350" src="/static/image/hit1.png" alt="Изображение товара">
                 <p class="price_modal">85 ₽</p>
                 <p class="description_modal">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
                 <p class="extra_info">Код товара: 1001</p>
@@ -344,93 +351,5 @@
             </div>
         </div>
     </main>
-    <script>
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        let index = 0;
-
-        function showSlide(i) {
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
-
-            slides[i].classList.add('active');
-            dots[i].classList.add('active');
-        }
-
-        document.querySelector('.next').onclick = () => {
-            index = (index + 1) % slides.length;
-            showSlide(index);
-        };
-
-        document.querySelector('.prev').onclick = () => {
-            index = (index - 1 + slides.length) % slides.length;
-            showSlide(index);
-        };
-
-        dots.forEach((dot, i) => {
-            dot.onclick = () => {
-                index = i;
-                showSlide(index);
-            };
-        });
-        const burger = document.getElementById('burger');
-        const menu = document.getElementById('mobileMenu');
-
-        burger.addEventListener('click', () => {
-            menu.classList.toggle('active');
-        });
-
-        menu.addEventListener('click', () => {
-            menu.classList.remove('active');
-        });
-
-        // Модальное окно
-        const modal = document.getElementById('myModal');
-        const closeBtn = modal.querySelector('.close_btn');
-
-        function openModal() {
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-
-
-
-        closeBtn.addEventListener('click', closeModal);
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
-
-        const buttons = document.querySelectorAll('.catalog_btn');
-
-        buttons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                buttons.forEach(b => b.classList.remove('active'));
-
-                btn.classList.add('active');
-
-                const category = btn.dataset.category;
-
-                // loadProducts(category);
-            });
-        });
-
-        // function loadProducts(category) {
-        //     fetch(`/api/products?category=${category}`)
-        //         .then(res => res.json())
-        //         .then(data => {
-        //             renderProducts(data);
-        //         });
-        // }
-
-    </script>
 </body>
 </html>
