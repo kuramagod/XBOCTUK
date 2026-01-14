@@ -1,4 +1,5 @@
-from sqlmodel import SQLModel, create_engine, Session
+from sqlmodel import SQLModel, create_engine, Session, Field, Relationship
+from decimal import Decimal
 
 
 sqlite_file_name = "database.db"
@@ -15,3 +16,69 @@ def create_dn_and_tables():
 def get_session():
     with Session(engine) as session:
         yield session
+
+# Модели
+
+# Категории
+class CategoryBase(SQLModel):
+    name: str
+
+
+class Category(CategoryBase, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+    products: list["Product"] = Relationship(back_populates="category")
+
+
+class CategoryCreate(CategoryBase):
+    pass
+
+
+class CategoryUpdate(SQLModel):
+    name: str | None = None
+
+# Товары
+class ProductBase(SQLModel):
+    description: str
+    brand: str | None = None
+    country: str | None = None
+    material: str | None = None
+    animal_age: str | None = None
+
+
+class Product(ProductBase, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+    price: Decimal  
+    category_id: int | None = Field(default=None, foreign_key="category.id")
+    category: Category | None = Relationship(back_populates="products")
+
+
+class ProductCreate(ProductBase):
+    price: Decimal
+    category_id: int
+
+
+class ProductUpdate(SQLModel):
+    price: Decimal | None = None
+    description: str | None = None
+    brand: str | None = None
+    country: str | None = None
+    material: str | None = None
+    animal_age: str | None = None
+
+# Отзывы
+class ReviewBase(SQLModel):
+    username: str
+    text: str
+
+
+class Review(ReviewBase, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+
+
+class ReviewCreate(ReviewBase):
+    pass
+
+
+class ReviewUpdate(SQLModel):
+    username: str | None = None
+    text: str | None = None

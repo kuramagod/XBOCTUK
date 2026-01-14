@@ -1,6 +1,6 @@
 from pathlib import Path
 from fastapi import FastAPI, Request
-from database import create_dn_and_tables
+from database import create_dn_and_tables, Product, Category, Review
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 
@@ -20,3 +20,6 @@ def on_startup():
 @app.get("/")
 def main_page(request: Request):
     return template_obj.TemplateResponse("index.html", {"request": request})
+
+# @app.post("/product/", response_model=Product)
+# def create_product(product: Product,)
