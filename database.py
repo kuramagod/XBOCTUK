@@ -24,7 +24,8 @@ SessionDep = Annotated[Session, Depends(get_session)]
 # Модели
 # Категории
 class CategoryBase(SQLModel):
-    name: str
+    title: str
+    text: str
 
 
 class Category(CategoryBase, table=True):
@@ -37,11 +38,13 @@ class CategoryCreate(CategoryBase):
 
 
 class CategoryUpdate(SQLModel):
-    name: str | None = None
+    title: str | None = None
+    text: str | None = None
 
 # Товары
 class ProductBase(SQLModel):
     description: str
+    is_hit: bool = False
     brand: str | None = None
     country: str | None = None
     material: str | None = None
@@ -63,6 +66,7 @@ class ProductCreate(ProductBase):
 class ProductUpdate(SQLModel):
     price: Decimal | None = None
     description: str | None = None
+    is_hit: bool | None = None
     brand: str | None = None
     country: str | None = None
     material: str | None = None
