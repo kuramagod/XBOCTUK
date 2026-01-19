@@ -31,12 +31,12 @@ def main_page(
     ):
     reviews = review.read_reviews(session)
     categories = category.read_categories(session)
-    # hits = session.exec(select(Product).where(Product.is_hit == True)).all()
-    # hit_products = sample(hits, 4) if len(hits) >= 4 else hits
+    hits = session.exec(select(Product).where(Product.is_hit == True)).all()
+    hit_products = sample(hits, 4) if len(hits) >= 4 else hits
 
     return template_obj.TemplateResponse("index.html", {
         "request": request, 
         "reviews": reviews, 
         "categories": categories,
-        # "hit_products": hit_products
+        "hit_products": hit_products
         })

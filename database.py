@@ -49,6 +49,7 @@ class ProductBase(SQLModel):
     country: str | None = None
     material: str | None = None
     animal_age: str | None = None
+    image: str | None = None
 
 
 class Product(ProductBase, table=True):
@@ -60,6 +61,7 @@ class Product(ProductBase, table=True):
 
 class ProductCreate(ProductBase):
     price: Decimal
+    image: str | None = None
     category_id: int
 
 

@@ -14,23 +14,36 @@ menu.addEventListener('click', () => {
 // Карточка товара
 const modal = document.getElementById('myModal');
 const closeBtn = modal.querySelector('.close_btn');
+const products = document.querySelectorAll('.product_card');
 
-function openModal() {
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
 
-function closeModal() {
+products.forEach(product => {
+        product.querySelector('.details_button').addEventListener('click', () => {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+
+            modal.querySelector('img').src = product.dataset.image;
+            modal.querySelector('.price_modal').textContent = product.dataset.price;
+            modal.querySelector('.description_modal').textContent = product.dataset.description;
+
+            modal.querySelector('#product_code').textContent =
+                `Код товара: ${product.dataset.code}`;
+            modal.querySelector('#product_category').textContent =
+                `Категория: ${product.dataset.category}`;
+            modal.querySelector('#product_brand').textContent =
+                `Бренд: ${product.dataset.brand}`;
+            modal.querySelector('#product_country').textContent =
+                `Страна производства: ${product.dataset.country}`;
+            modal.querySelector('#product_material').textContent =
+                `Материал: ${product.dataset.material}`;
+            modal.querySelector('#product_age').textContent =
+                `Возраст питомца: ${product.dataset.age}`;
+            })
+        })
+
+closeBtn.addEventListener('click', () => {
     modal.style.display = 'none';
     document.body.style.overflow = '';
-}
-
-closeBtn.addEventListener('click', closeModal);
-
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        closeModal();
-    }
 });
 
 // Слайдер

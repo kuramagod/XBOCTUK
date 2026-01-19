@@ -82,30 +82,24 @@
             <div class="container">
                 <p class="title">Хиты продаж</p>
                 <div class="bestsellers_flex">
-                    <div class="product_card">
-                        <img width="215" height="173" src="/static/image/hit1.png" alt="Изображение товара">
-                        <p class="price">85 ₽</p>
-                        <p class="description">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
-                        <button class="details_button" onclick="openModal()">Подробнее</button>
-                    </div>
-                    <div class="product_card">
-                        <img width="215" height="173" src="/static/image/hit2.png" alt="Изображение товара">
-                        <p class="price">85 ₽</p>
-                        <p class="description">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
-                        <button class="details_button">Подробнее</button>
-                    </div>
-                    <div class="product_card">
-                        <img width="215" height="173" src="/static/image/hit1.png" alt="Изображение товара">
-                        <p class="price">85 ₽</p>
-                        <p class="description">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
-                        <button class="details_button">Подробнее</button>
-                    </div>
-                    <div class="product_card">
-                        <img width="215" height="173" src="/static/image/hit1.png" alt="Изображение товара">
-                        <p class="price">85 ₽</p>
-                        <p class="description">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
-                        <button class="details_button">Подробнее</button>
-                    </div>
+                    {% for hit in hit_products %}
+                        <div class="product_card"
+                            data-image="{{ url_for('static', path='images/' + hit.image) }}"
+                            data-price="{{ hit.price|round() }} ₽"
+                            data-description="{{ hit.description }}"
+                            data-code="{{ hit.id }}"
+                            data-category="{{ hit.category.name }}"
+                            data-brand="{{ hit.brand }}"
+                            data-country="{{ hit.country }}"
+                            data-material="{{ hit.material }}"
+                            data-age="{{ hit.animal_age }}"
+                        >
+                            <img width="215" height="173" src="{{ url_for('static', path='images/' + hit.image) }}" alt="Изображение товара">
+                            <p class="price">{{ hit.price|round() }} ₽</p>
+                            <p class="description">{{ hit.description }}</p>
+                            <button class="details_button">Подробнее</button>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
@@ -321,12 +315,12 @@
                 <img width="700" height="350" src="/static/image/hit1.png" alt="Изображение товара">
                 <p class="price_modal">85 ₽</p>
                 <p class="description_modal">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
-                <p class="extra_info">Код товара: 1001</p>
-                <p class="extra_info">Категория: Корм</p>
-                <p class="extra_info">Бренд: Хвостик</p>
-                <p class="extra_info">Страна производства: Россия</p>
-                <p class="extra_info">Материал: Натуральные материалы</p>
-                <p class="extra_info">Возраст питомца: Для всех возрастов</p>
+                <p class="extra_info" id="product_code">Код товара: 1001</p>
+                <p class="extra_info" id="product_category">Категория: Корм</p>
+                <p class="extra_info" id="product_brand">Бренд: Хвостик</p>
+                <p class="extra_info" id="product_country">Страна производства: Россия</p>
+                <p class="extra_info" id="product_material">Материал: Натуральные материалы</p>
+                <p class="extra_info" id="product_age">Возраст питомца: Для всех возрастов</p>
             </div>
         </div>
     </main>
