@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
-    <script src="{{ url_for('static', path='script.js') }}" async></script>
+    <script src="{{ url_for('static', path='script.js') }}" defer></script>
     <!-- <link rel="stylesheet" href="/static/style.css"> -->
     <!-- <script src="/static/script.js" async></script> -->
     <title>Хвостик</title>
@@ -88,7 +88,7 @@
                             data-price="{{ hit.price|round() }} ₽"
                             data-description="{{ hit.description }}"
                             data-code="{{ hit.id }}"
-                            data-category="{{ hit.category.name }}"
+                            data-category="{{ hit.category.text }}"
                             data-brand="{{ hit.brand }}"
                             data-country="{{ hit.country }}"
                             data-material="{{ hit.material }}"
@@ -114,55 +114,8 @@
                     {% endfor %}
                 </div>
 
-                <div class="bestsellers_flex">
-                    <div class="product_card">
-                        <img width="215" height="173" src="/static/image/hit1.png" alt="Изображение товара">
-                        <p class="price">85 ₽</p>
-                        <p class="description">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
-                        <button class="details_button">Подробнее</button>
-                    </div>
-                    <div class="product_card">
-                        <img width="215" height="173" src="/static/image/hit2.png" alt="Изображение товара">
-                        <p class="price">85 ₽</p>
-                        <p class="description">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
-                        <button class="details_button">Подробнее</button>
-                    </div>
-                    <div class="product_card">
-                        <img width="215" height="173" src="/static/image/hit1.png" alt="Изображение товара">
-                        <p class="price">85 ₽</p>
-                        <p class="description">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
-                        <button class="details_button">Подробнее</button>
-                    </div>
-                    <div class="product_card">
-                        <img width="215" height="173" src="/static/image/hit1.png" alt="Изображение товара">
-                        <p class="price">85 ₽</p>
-                        <p class="description">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
-                        <button class="details_button">Подробнее</button>
-                    </div>
-                    <div class="product_card">
-                        <img width="215" height="173" src="/static/image/hit1.png" alt="Изображение товара">
-                        <p class="price">85 ₽</p>
-                        <p class="description">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
-                        <button class="details_button">Подробнее</button>
-                    </div>
-                    <div class="product_card">
-                        <img width="215" height="173" src="/static/image/hit2.png" alt="Изображение товара">
-                        <p class="price">85 ₽</p>
-                        <p class="description">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
-                        <button class="details_button">Подробнее</button>
-                    </div>
-                    <div class="product_card">
-                        <img width="215" height="173" src="/static/image/hit1.png" alt="Изображение товара">
-                        <p class="price">85 ₽</p>
-                        <p class="description">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
-                        <button class="details_button">Подробнее</button>
-                    </div>
-                    <div class="product_card">
-                        <img width="215" height="173" src="/static/image/hit1.png" alt="Изображение товара">
-                        <p class="price">85 ₽</p>
-                        <p class="description">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
-                        <button class="details_button">Подробнее</button>
-                    </div>
+                <div class="bestsellers_flex" id="productsList">
+                    <!-- Здесь будут появлятся товары в зависимости от фильтра -->
                 </div>
             </div>
         </section>

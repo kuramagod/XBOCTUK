@@ -15,7 +15,7 @@ def read_products(
     query = select(Product)
 
     if category:
-        db_category = session.exec(select(Category).where(Category.name == category)).first()
+        db_category = session.exec(select(Category).where(Category.title == category)).first()
         if not db_category:
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Категория не найдена")
         query = query.where(Product.category_id == db_category.id)
