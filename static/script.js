@@ -16,7 +16,7 @@ async function loadProducts(category) {
             data-price="${Math.round(product.price)} ₽"
             data-description="${product.description}"
             data-code="${product.id}"
-            data-category="${product.category_id}" 
+            data-category="${product.category}"
             data-brand="${product.brand}"
             data-country="${product.country}"
             data-material="${product.material}"

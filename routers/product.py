@@ -2,13 +2,13 @@ from typing import Annotated
 from fastapi import APIRouter, HTTPException, status, Query
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import select
-from database import SessionDep, Product, ProductCreate, ProductUpdate, Category
+from database import SessionDep, Product, ProductCreate, ProductUpdate, ProductRead, Category
 
 
 router = APIRouter(prefix="/product", tags=["product"])
 
 
-@router.get("/", response_model=list[Product])
+@router.get("/", response_model=list[ProductRead])
 def read_products(
     session: SessionDep, 
     category: Annotated[str | None, Query(min_length=3)] = None) -> Product:
@@ -21,7 +21,13 @@ def read_products(
         query = query.where(Product.category_id == db_category.id)
     
     query = query.order_by(Product.id)
-    return session.exec(query).all()
+    results = session.exec(query).all()
+    return [
+        ProductRead(
+            **product.model_dump(),
+            category=product.category.text
+        ) for product in results
+    ]
 
 
 @router.post("/", response_model=Product)

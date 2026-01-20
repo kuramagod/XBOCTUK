@@ -65,6 +65,18 @@ class ProductCreate(ProductBase):
     category_id: int
 
 
+class ProductRead(SQLModel):
+    id: int
+    price: Decimal
+    description: str
+    image: str
+    brand: str | None
+    country: str | None
+    material: str | None
+    animal_age: str | None
+    category: str
+
+
 class ProductUpdate(SQLModel):
     price: Decimal | None = None
     description: str | None = None
