@@ -183,15 +183,15 @@
                 <div class="leave_review">
                     <p class="leave_review_title">Оставьте свой отзыв</p>
 
-                    <form class="review_form">
+                    <form class="review_form" id="review_form">
                         <label for="name">Ваше имя</label>
-                        <input type="text" id="name" placeholder="Введите имя" required>
+                        <input type="text" name="username" placeholder="Введите имя" required>
 
                         <label for="email">Почта</label>
-                        <input type="email" id="email" placeholder="Введите почту" required>
+                        <input type="email" name="email" placeholder="Введите почту" required>
 
                         <label for="review">Ваш отзыв</label>
-                        <textarea id="review" placeholder="Впишите отзыв в данное поле" required></textarea>
+                        <textarea name="text" placeholder="Впишите отзыв в данное поле" required></textarea>
 
                         <button type="submit">Отправить</button>
                     </form>

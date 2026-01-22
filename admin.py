@@ -95,3 +95,5 @@ def admin_required(
     if not user.is_admin:
         raise HTTPException(status_code=403, detail="Admin only")
     return user
+
+AdminDep = Annotated[User, Depends(admin_required)]

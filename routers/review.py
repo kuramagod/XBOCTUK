@@ -1,3 +1,4 @@
+from admin import AdminDep
 from typing import Annotated
 from fastapi import APIRouter, HTTPException, status
 from sqlalchemy.exc import IntegrityError
@@ -36,6 +37,7 @@ def create_product(
 def update_item(
     category_id: int,
     review: ReviewUpdate,
+    admin: AdminDep,
     session: SessionDep
     ) -> Review:
     review_db = session.get(Review, category_id)
@@ -54,6 +56,7 @@ def update_item(
 @router.delete("/{review_id}")
 def delete_item(
     review_id: int,
+    admin: AdminDep,
     session: SessionDep
     ) -> dict: 
     category_db = session.get(Review, review_id)

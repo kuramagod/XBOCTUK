@@ -126,4 +126,27 @@ document.addEventListener('DOMContentLoaded', async function () {
             showSlide(index);
         };
     });
+
+    // Отзыв
+    const review_form = document.getElementById('review_form');
+
+    review_form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formData = new FormData(review_form);
+        const data = Object.fromEntries(formData);
+
+        const response = await fetch(`/review/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            window.location.reload();
+        } else {
+            console.log(response);
+        }
+    });
 });

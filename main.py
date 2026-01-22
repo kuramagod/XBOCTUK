@@ -3,7 +3,7 @@ from random import sample
 from fastapi import FastAPI, Request
 from sqlmodel import select
 from routers import product, review, category, user
-from database import create_dn_and_tables, SessionDep, Product
+from database import create_dn_and_tables, SessionDep, Product, base_category_add
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from admin import create_super_user
@@ -26,6 +26,7 @@ app.mount("/static", StaticFiles(directory=f"{top}/static"), name="static")
 def on_startup():
     create_dn_and_tables()
     create_super_user()
+    base_category_add()
 
 
 @app.get("/")
@@ -33,7 +34,7 @@ def main_page(
     request: Request,
     session: SessionDep
     ):
-    reviews = review.read_reviews(session)
+    reviews = review.read_reviews(session)[-3:]
     categories = category.read_categories(session)
     hits = session.exec(select(Product).where(Product.is_hit == True)).all()
     hit_products = sample(hits, 4) if len(hits) >= 4 else hits

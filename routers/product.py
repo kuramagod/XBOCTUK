@@ -2,6 +2,7 @@ from typing import Annotated
 from fastapi import APIRouter, HTTPException, status, Query
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import select
+from admin import AdminDep
 from database import SessionDep, Product, ProductCreate, ProductUpdate, ProductRead, Category
 
 
@@ -33,6 +34,7 @@ def read_products(
 @router.post("/", response_model=Product)
 def create_product(
     product: ProductCreate,
+    admin: AdminDep,
     session: SessionDep
     ) -> Product:
     db_item = Product.model_validate(product)
@@ -52,6 +54,7 @@ def create_product(
 @router.patch("/{product_id}", response_model=Product)
 def update_item(
     product_id: int,
+    admin: AdminDep,
     product: ProductUpdate,
     session: SessionDep
     ) -> Product:
@@ -71,6 +74,7 @@ def update_item(
 @router.delete("/{product_id}")
 def delete_item(
     product_id: int,
+    admin: AdminDep,
     session: SessionDep
     ) -> dict: 
     product_db = session.get(Product, product_id)
