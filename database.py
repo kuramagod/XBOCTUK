@@ -22,6 +22,24 @@ def get_session():
 SessionDep = Annotated[Session, Depends(get_session)]
 
 # Модели
+# JWT-Токен
+class Token(SQLModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(SQLModel):
+    username: str | None = None
+
+
+# Админ
+class User(SQLModel, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+    username: str
+    hashed_password: str
+    is_admin: bool
+
+
 # Категории
 class CategoryBase(SQLModel):
     title: str

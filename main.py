@@ -2,11 +2,11 @@ from pathlib import Path
 from random import sample
 from fastapi import FastAPI, Request
 from sqlmodel import select
-from routers import product, review, category
+from routers import product, review, category, user
 from database import create_dn_and_tables, SessionDep, Product
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-
+from admin import create_super_user
 
 app = FastAPI()
 
@@ -14,15 +14,19 @@ app = FastAPI()
 app.include_router(product.router)
 app.include_router(review.router)
 app.include_router(category.router)
+app.include_router(user.router)
 
 
 top = Path(__file__).resolve().parent
 template_obj = Jinja2Templates(directory=f"{top}/templates")
 app.mount("/static", StaticFiles(directory=f"{top}/static"), name="static")
 
+
 @app.on_event("startup")
 def on_startup():
     create_dn_and_tables()
+    create_super_user()
+
 
 @app.get("/")
 def main_page(
