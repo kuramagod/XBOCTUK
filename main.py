@@ -1,9 +1,10 @@
 from pathlib import Path
+from seed import base_category_add, base_product_add, base_review_add
 from random import sample
 from fastapi import FastAPI, Request
 from sqlmodel import select
 from routers import product, review, category, user
-from database import create_dn_and_tables, SessionDep, Product, base_category_add
+from database import create_dn_and_tables, SessionDep, Product
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from admin import create_super_user
@@ -26,7 +27,11 @@ app.mount("/static", StaticFiles(directory=f"{top}/static"), name="static")
 def on_startup():
     create_dn_and_tables()
     create_super_user()
+
+    # Заполнение демо-данными
     base_category_add()
+    base_product_add()
+    base_review_add()
 
 
 @app.get("/")
@@ -45,3 +50,8 @@ def main_page(
         "categories": categories,
         "hit_products": hit_products
         })
+
+
+@app.get("/admin")
+def admin_page(request: Request):
+    return template_obj.TemplateResponse("admin.html", {"request": request})

@@ -1,7 +1,7 @@
 from decimal import Decimal
 from typing import Annotated
 from fastapi import Depends
-from sqlmodel import SQLModel, create_engine, Session, Field, Relationship, select
+from sqlmodel import SQLModel, create_engine, Session, Field, Relationship
 
 
 sqlite_file_name = "database.db"
@@ -13,26 +13,7 @@ engine = create_engine(sqlite_url, connect_args=connection_args)
 
 def create_dn_and_tables():
     SQLModel.metadata.create_all(engine)
-
-
-def base_category_add():
-    with Session(engine) as session:
-        if session.exec(select(Category)).first():
-            return None
-        
-        pharmacy = Category(id=1, title="apteka", text="Аптека")
-        feed = Category(id=2, title="feed", text="Корм")
-        toys = Category(id=3, title="toys", text="Игрушки")
-        cloth = Category(id=4, title="cloth", text="Одежда")
-        hygiene = Category(id=5, title="hygiene", text="Гигена")
-
-        session.add(pharmacy)
-        session.add(feed)
-        session.add(toys)
-        session.add(cloth)
-        session.add(hygiene)
-
-        session.commit()
+    
 
 def get_session():
     with Session(engine) as session:
