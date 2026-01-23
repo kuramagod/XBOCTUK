@@ -12,10 +12,10 @@ from admin import create_super_user
 app = FastAPI()
 
 
-app.include_router(product.router)
-app.include_router(review.router)
-app.include_router(category.router)
-app.include_router(user.router)
+app.include_router(product.router, prefix="/api")
+app.include_router(review.router, prefix="/api")
+app.include_router(category.router, prefix="/api")
+app.include_router(user.router, prefix="/api")
 
 
 top = Path(__file__).resolve().parent

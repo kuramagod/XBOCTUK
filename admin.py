@@ -5,15 +5,12 @@ from typing import Annotated
 from dotenv import load_dotenv
 from passlib.context import CryptContext
 from datetime import datetime, timezone, timedelta
-from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
+from fastapi import Depends, HTTPException, status, Request
 from sqlmodel import select, Session
-from jwt import InvalidTokenError
-from database import SessionDep, User, TokenData, engine
+from database import SessionDep, User, engine
 
 
 pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/users/login")
 
 load_dotenv()
 
@@ -69,23 +66,24 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     return encoded_jwt
 
 
-async def get_current_user(session: SessionDep, token: Annotated[str, Depends(oauth2_scheme)]):
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
+async def get_current_user(
+        request: Request,
+        session: SessionDep,
+):
+    token = request.cookies.get("access_token")
+    if not token:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+    
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         username = payload.get("sub")
-        if username is None:
-            raise credentials_exception
-        token_data = TokenData(username=username)
-    except InvalidTokenError:
-        raise credentials_exception
-    user = session.exec(select(User).where(User.username == token_data.username)).first()
-    if user is None:
-        raise credentials_exception
+    except Exception:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+    
+    user = session.exec(select(User).where(User.username == username)).first()
+    if not user:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+    
     return user
 
 

@@ -23,11 +23,6 @@ SessionDep = Annotated[Session, Depends(get_session)]
 
 # Модели
 # JWT-Токен
-class Token(SQLModel):
-    access_token: str
-    token_type: str
-
-
 class TokenData(SQLModel):
     username: str | None = None
 
