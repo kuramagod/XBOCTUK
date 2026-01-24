@@ -1,9 +1,10 @@
 from typing import Annotated
 from datetime import timedelta
-from fastapi import APIRouter, Depends, HTTPException, status, Response
-from fastapi.security import OAuth2PasswordRequestForm
 from database import SessionDep, User
-from admin import authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, get_current_user
+from core.config import ACCESS_TOKEN_EXPIRE_MINUTES
+from fastapi.security import OAuth2PasswordRequestForm
+from fastapi import APIRouter, Depends, HTTPException, status, Response
+from core.security import authenticate_user, create_access_token, get_current_user
 
 
 router = APIRouter(prefix="/users", tags=["users"])

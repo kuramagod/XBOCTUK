@@ -2,7 +2,7 @@ from typing import Annotated
 from fastapi import APIRouter, HTTPException, status, Query
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import select
-from admin import AdminDep
+from admin.auth import AdminDep
 from database import SessionDep, Product, ProductCreate, ProductUpdate, ProductRead, Category
 
 

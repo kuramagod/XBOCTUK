@@ -1,5 +1,5 @@
 async function loadProducts(category) {
-    var url = `/product/`;
+    var url = `/api/product/`;
     
     if (category != "all") {
         url += `?category=${category}`;
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const formData = new FormData(review_form);
         const data = Object.fromEntries(formData);
 
-        const response = await fetch(`/review/`, {
+        const response = await fetch(`/api/review/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -1,36 +1,26 @@
 import jwt
-import os
 
-from typing import Annotated
-from dotenv import load_dotenv
+from sqlmodel import select
 from passlib.context import CryptContext
 from datetime import datetime, timezone, timedelta
-from fastapi import Depends, HTTPException, status, Request
-from sqlmodel import select, Session
-from database import SessionDep, User, engine
+from fastapi import HTTPException, status, Request
+from database import SessionDep, User, get_session
+from core.config import SECRET_KEY, ALGORITHM, ADMIN_USERNAME, ADMIN_PASSWORD
 
 
 pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
 
-load_dotenv()
-
-SECRET_KEY = os.getenv("SECRET_KEY")
-ALGORITHM = os.getenv("ALGORITHM")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
-
 
 # Создание админа
 def create_super_user():
-    with Session(engine) as session:
-        if session.exec(select(User).where(User.is_admin == True)).first():
-            return None
-    
-    username = os.getenv("ADMIN_USERNAME")
-    password = os.getenv("ADMIN_PASSWORD")
-    
+    session = next(get_session())
+
+    if session.exec(select(User).where(User.is_admin == True)).first():
+        return None
+
     admin = User(
-        username=username, 
-        hashed_password=get_password_hash(password), 
+        username=ADMIN_USERNAME, 
+        hashed_password=get_password_hash(ADMIN_PASSWORD), 
         is_admin=True
     )
     
@@ -66,10 +56,7 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     return encoded_jwt
 
 
-async def get_current_user(
-        request: Request,
-        session: SessionDep,
-):
+async def get_current_user(request: Request, session: SessionDep,):
     token = request.cookies.get("access_token")
     if not token:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
@@ -85,13 +72,3 @@ async def get_current_user(
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
     
     return user
-
-
-def admin_required(
-    user: Annotated[User, Depends(get_current_user)]
-):
-    if not user.is_admin:
-        raise HTTPException(status_code=403, detail="Admin only")
-    return user
-
-AdminDep = Annotated[User, Depends(admin_required)]

@@ -1,21 +1,40 @@
 from pathlib import Path
-from seed import base_category_add, base_product_add, base_review_add
 from random import sample
-from fastapi import FastAPI, Request
+
 from sqlmodel import select
+
+from sqladmin import Admin
+from admin.auth import AdminAuth
+from admin.views import CategoryAdmin, ProductAdmin, ReviewAdmin
+
+from fastapi import FastAPI, Request
 from routers import product, review, category, user
-from database import create_dn_and_tables, SessionDep, Product
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from admin import create_super_user
+
+from core.security import create_super_user
+from core.config import SECRET_KEY
+
+from database import create_dn_and_tables, SessionDep, Product, engine
+from seed import base_category_add, base_product_add, base_review_add
+
 
 app = FastAPI()
-
 
 app.include_router(product.router, prefix="/api")
 app.include_router(review.router, prefix="/api")
 app.include_router(category.router, prefix="/api")
 app.include_router(user.router, prefix="/api")
+
+admin = Admin(
+    app, 
+    engine, 
+    authentication_backend=AdminAuth(secret_key=SECRET_KEY)
+)
+
+admin.add_view(CategoryAdmin)
+admin.add_view(ProductAdmin)
+admin.add_view(ReviewAdmin)
 
 
 top = Path(__file__).resolve().parent
@@ -49,9 +68,4 @@ def main_page(
         "reviews": reviews, 
         "categories": categories,
         "hit_products": hit_products
-        })
-
-
-@app.get("/admin")
-def admin_page(request: Request):
-    return template_obj.TemplateResponse("admin.html", {"request": request})
+    })

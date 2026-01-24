@@ -1,5 +1,4 @@
-from admin import AdminDep
-from typing import Annotated
+from admin.auth import AdminDep
 from fastapi import APIRouter, HTTPException, status
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import select
