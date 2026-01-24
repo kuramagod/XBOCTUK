@@ -49,22 +49,20 @@ class AdminAuth(AuthenticationBackend):
         return True
     
 
-    async def authenticate(self, request: Request) -> None | bool:
+    async def authenticate(self, request: Request) -> bool:
         token = request.session.get("token")
-        
         if not token:
             return False
-            
+
         try:
             payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-            username = payload.get("sub")
-            
-            session = next(get_session())
-            
-            user = session.exec(select(User).where(User.username == username)).first()
-            if user and user.is_admin:
-                return True
+            username = payload["sub"]
         except Exception:
             return False
-            
-        return False
+
+        session = next(get_session())
+        return bool(
+            session.exec(
+                select(User).where(User.username == username, User.is_admin == True)
+            ).first()
+        )
