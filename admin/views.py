@@ -3,11 +3,15 @@ import shutil
 import uuid
 from sqladmin import ModelView
 from sqladmin.fields import FileField
+from markupsafe import Markup
 from database import Category, Review, Product
 
 
 
 class CategoryAdmin(ModelView, model=Category):
+    name = "Категория"
+    name_plural = "Категории"
+
     column_list = [
         Category.id,
         Category.title,
@@ -16,7 +20,11 @@ class CategoryAdmin(ModelView, model=Category):
 
 
 class ProductAdmin(ModelView, model=Product):
+    name = "Товар"
+    name_plural = "Товары"
+
     UPLOAD_PATH = Path("static/images/products")
+    BASE_STATIC_URL = "/static/images/"
 
     column_list = [
         Product.id,
@@ -26,13 +34,6 @@ class ProductAdmin(ModelView, model=Product):
         Product.image,
         Product.category,
     ]
-
-    column_formatters = {
-        Product.price: lambda m, a: f"{round(m.price)} ₽",
-        Product.description: lambda m, a: (
-            m.description[:50] + "..." if m.description else ""
-        ),
-    }
 
     form_columns = [
         Product.price,
@@ -45,6 +46,30 @@ class ProductAdmin(ModelView, model=Product):
         Product.category,
         Product.image,
     ]
+
+    column_formatters = {
+        Product.price: lambda m, a: f"{round(m.price)} ₽",
+        Product.description: lambda m, a: (
+            m.description[:40] + "..." if m.description else ""
+        ),
+        Product.image: lambda m, a: (
+            Markup(
+                f'<img src="{ProductAdmin.BASE_STATIC_URL}{m.image}" '
+                f'style="max-height:100px; max-width:100px; border-radius:6px;">'
+            )
+            if m.image else "Нет изображения"
+        ),
+    }
+
+    column_formatters_detail = {
+        Product.image: lambda m, a: (
+            Markup(
+                f'<img src="{ProductAdmin.BASE_STATIC_URL}{m.image}" '
+                f'style="max-height:100px; max-width:100px; border-radius:6px;">'
+            )
+            if m.image else "Нет изображения"
+        ),
+    }
 
     form_overrides = {
         "image": FileField
@@ -69,10 +94,19 @@ class ProductAdmin(ModelView, model=Product):
 
 
 class ReviewAdmin(ModelView, model=Review):
+    name = "Отзыв"
+    name_plural = "Отзывы"
+
     column_list = [
         Review.id,
         Review.username,
         Review.text
     ]
+
+    column_formatters = {
+        Review.text: lambda m, a: (
+            m.text[:60] + "..." if m.text else ""
+        ),
+    }
 
     can_create = False

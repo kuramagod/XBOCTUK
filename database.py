@@ -44,6 +44,9 @@ class CategoryBase(SQLModel):
 class Category(CategoryBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
     products: list["Product"] = Relationship(back_populates="category")
+    
+    def __str__(self):
+        return self.text
 
 
 class CategoryCreate(CategoryBase):
@@ -70,6 +73,9 @@ class Product(ProductBase, table=True):
     price: Decimal  
     category_id: int | None = Field(default=None, foreign_key="category.id")
     category: Category | None = Relationship(back_populates="products")
+
+    def __str__(self):
+        return f"Товар {self.id}"
 
 
 class ProductCreate(ProductBase):
