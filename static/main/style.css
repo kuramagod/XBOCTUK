@@ -283,7 +283,9 @@ header {
 
 /* Карточки товаров */
 .product_card {
+    position: relative;
     width: calc(25% - 21px);
+    min-height: 489px;
     margin-left: 21px;
     margin-bottom: 12px;
     color: var(--text-main);
@@ -293,7 +295,7 @@ header {
     background-color: var(--card-bg);
     border-radius: 10px;
     font-size: 20px;
-}
+}   
 
 .product_card img {
     max-width: 100%;
@@ -311,6 +313,12 @@ header {
 }
 
 .details_button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 40px;
+    bottom: 10px;
     margin-top: 20px;
     background-color: var(--bg-btn);
     color: var(--text-second);
@@ -325,9 +333,11 @@ header {
     .product_card {
         width: calc(50% - 21px);
         font-size: 16px;
+        min-height: 400px;
     }
     .details_button {
         font-size: 14px;
+        width: 110px;
     }
 }
 
