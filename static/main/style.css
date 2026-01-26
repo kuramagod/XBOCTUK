@@ -295,7 +295,7 @@ header {
     background-color: var(--card-bg);
     border-radius: 10px;
     font-size: 20px;
-}   
+} 
 
 .product_card img {
     max-width: 100%;
@@ -761,14 +761,14 @@ footer {
     top: 14px;
     right: 14px;
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.7;
 }
 
 .close_btn:hover {
     opacity: 1;
 }
 
-.modal_content img {
+.modal_image {
     align-self: center;
     object-fit: contain;
 }
@@ -805,7 +805,7 @@ footer {
     .extra_info {
         font-size: 14px;
     }
-    .modal_content img {
+    .modal_image {
         width: 280px;
         height: 200px;
     }
