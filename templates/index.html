@@ -47,16 +47,18 @@
     </div>
 
     <main>
-        <!-- Главная картина -->
+
+        <!-- Основное изображение -->
         <section class="main_title">
             <div class="main_image">
-                <img src="{{ url_for('static', path='images/bigmainimage.jpg') }}" alt="Главная картина">
+                <img src="{{ url_for('static', path='images/bigmainimage.jpg') }}" alt="Основное изображение">
             </div>
             <div class="main_content container">
                 <p class="first_info">Семейный магазин товаров для кошек</p>
                 <p class="second_info">Лучшее проявление любви к любимцу!</p>
             </div>
         </section>
+
         <!-- О нас -->
         <section id="about_us">
             <div class="container">
@@ -74,6 +76,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Хиты продаж -->
         <section id="bestsellers">
             <div class="container">
@@ -100,6 +103,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Каталог товаров -->
         <section id="products">
             <div class="container">
@@ -116,6 +120,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Наше производство -->
         <section id="our_production">
             <div class="container">
@@ -128,18 +133,21 @@
                                 <p>Мы используем безопасные и гипоаллергенные материалы, чтобы ваши кошки чувствовали комфорт каждый день.</p>
                             </div>
                         </div>
+
                         <div class="slide">
                             <img src="{{ url_for('static', path='images/manufacturer2.jpg') }}" alt="Изображение производства">
                             <div class="slide_content">
                                 <p>В работе используем только нетоксичные и гипоаллергенные материалы, подходящие для ежедневного использования.</p>
                             </div>
                         </div>
+
                         <div class="slide">
                             <img src="{{ url_for('static', path='images/manufacturer3.jpg') }}" alt="Изображение производства">
                             <div class="slide_content">
                                 <p>Мы проверяем каждое изделие вручную, чтобы оно было безопасным и долговечным для питомца.</p>
                             </div>
                         </div>
+
                         <div class="slide">
                             <img src="{{ url_for('static', path='images/manufacturer4.jpg') }}" alt="Изображение производства">
                             <div class="slide_content">
@@ -160,6 +168,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Отзывы -->
         <section id="reviews">
             <div class="container">
@@ -175,6 +184,7 @@
                         </div>
                     {% endfor %}
                 </div>
+
                 <div class="leave_review">
                     <p class="leave_review_title">Оставьте свой отзыв</p>
 
@@ -193,6 +203,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Контакты -->
         <section id="contacts">
             <div class="container">
@@ -203,11 +214,13 @@
                         <p>Позвоните нам</p>
                         <p>+8-999-999-99-99</p>
                     </div>
+
                     <div class="contact">
                         <img src="{{ url_for('static', path='images/phone.svg') }}" alt="Значок почты">
                         <p>Напишите нам</p>
                         <p>example@example.com</p>
                     </div>
+                    
                     <div class="contact">
                         <img src="{{ url_for('static', path='images/address.svg') }}" alt="Значок адреса">
                         <p>Наш адрес</p>
@@ -216,6 +229,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Подвал -->
         <footer>
             <div class="container">
@@ -223,9 +237,11 @@
                     <div class="footer_info">
                         <p>Семейный магазин товаров для кошек. Качество, доступность и забота о вашем питомце.</p>
                     </div>
+
                     <div class="footer_copyright">
                         <p>Copyright © 2025 Хвостик</p>
                     </div>
+                    
                     <div class="footer_nav">
                         <div class="footer_el">
                             <p>О компании</p>
@@ -233,12 +249,14 @@
                             <a href="#contacts">Контакты</a>
                             <a href="#reviews">Отзывы</a>
                         </div>
+                        
                         <div class="footer_el">
                             <p>Покупателям</p>
                             <a href="#about_us">О нас</a>
                             <a href="#bestsellers">Хиты продаж</a>
                             <a href="#products">Каталог товаров</a>
                         </div>
+                        
                         <div class="footer_el">
                             <p>Контакты</p>
                             <p>ул. Примерная 7Б</p>
@@ -249,12 +267,16 @@
                 </div>
             </div>
         </footer>
+
+        <!-- Модальное окно товаров -->
         <div id="myModal" class="modal_overlay">
             <div class="modal_content">
-                <svg class="close_btn" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2.41421 18.4143C1.86193 18.9666 0.9665 18.9666 0.414215 18.4143C-0.13807 17.862 -0.13807 16.9666 0.414215 16.4143L3.41422 13.4143C5.62336 11.2052 5.62335 7.62344 3.41421 5.41431L0.414215 2.41431C-0.13807 1.86202 -0.13807 0.966592 0.414215 0.414307C0.9665 -0.137978 1.86193 -0.137978 2.41422 0.414307L5.41422 3.41431C7.62336 5.62345 11.2051 5.62345 13.4142 3.41431L16.4142 0.414306C16.9665 -0.137979 17.8619 -0.137978 18.4142 0.414307C18.9665 0.966592 18.9665 1.86202 18.4142 2.41431L15.4142 5.41431C13.2051 7.62345 13.2051 11.2052 15.4142 13.4143L18.4142 16.4143C18.9665 16.9666 18.9665 17.862 18.4142 18.4143C17.8619 18.9666 16.9665 18.9666 16.4142 18.4143L13.4142 15.4143C11.2051 13.2052 7.62335 13.2052 5.41421 15.4143L2.41421 18.4143Z" fill="black"/>
-                </svg>
+                <button class="close_btn">
+                    <img src="{{ url_for('static', path='images/exit.svg') }}" alt="Закрыть">
+                </button>
+
                 <img class="modal_image" width="700" height="350" src="{{ url_for('static', path='images/nophoto.jpg') }}" alt="Изображение товара">
+                
                 <p class="price_modal">85 ₽</p>
                 <p class="description_modal">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>
                 <p class="extra_info" id="product_code">Код товара: 1001</p>
@@ -265,6 +287,7 @@
                 <p class="extra_info" id="product_age">Возраст питомца: Для всех возрастов</p>
             </div>
         </div>
+
     </main>
 </body>
 </html>

@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
 
-        modal.querySelector('img').src = card.dataset.image;
+        modal.querySelector('.modal_image').src = card.dataset.image;
         modal.querySelector('.price_modal').textContent = card.dataset.price;
         modal.querySelector('.description_modal').textContent = card.dataset.description;
 
