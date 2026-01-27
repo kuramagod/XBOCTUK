@@ -1,11 +1,7 @@
 from pathlib import Path
-import shutil
-import uuid
 from sqladmin import ModelView
-from sqladmin.fields import FileField
 from markupsafe import Markup
-from database import Category, Review, Product
-
+from database import Category, Review, Product, BASE_DIR
 
 
 class CategoryAdmin(ModelView, model=Category):
@@ -23,8 +19,7 @@ class ProductAdmin(ModelView, model=Product):
     name = "Товар"
     name_plural = "Товары"
 
-    UPLOAD_PATH = Path("static/images/products")
-    BASE_STATIC_URL = "/static/images/"
+    BASE_STATIC_URL = "/static"
 
     column_list = [
         Product.id,
@@ -47,50 +42,30 @@ class ProductAdmin(ModelView, model=Product):
         Product.image,
     ]
 
+    def image_formatter(model, attr):
+        if not model.image:
+            return "Нет изображения"
+
+        path = Path(model.image)
+        
+        relative = path.relative_to(BASE_DIR / "static")
+
+        return Markup(
+            f'<img src="{ProductAdmin.BASE_STATIC_URL}/{relative.as_posix()}" '
+            f'style="max-height:100px; border-radius:10px;">'
+        )
+
     column_formatters = {
         Product.price: lambda m, a: f"{round(m.price)} ₽",
         Product.description: lambda m, a: (
             m.description[:40] + "..." if m.description else ""
         ),
-        Product.image: lambda m, a: (
-            Markup(
-                f'<img src="{ProductAdmin.BASE_STATIC_URL}{m.image}" '
-                f'style="max-height:100px; max-width:100px; border-radius:6px;">'
-            )
-            if m.image else "Нет изображения"
-        ),
+        Product.image: image_formatter
     }
 
     column_formatters_detail = {
-        Product.image: lambda m, a: (
-            Markup(
-                f'<img src="{ProductAdmin.BASE_STATIC_URL}{m.image}" '
-                f'style="max-height:100px; max-width:100px; border-radius:6px;">'
-            )
-            if m.image else "Нет изображения"
-        ),
+        Product.image: image_formatter
     }
-
-    form_overrides = {
-        "image": FileField
-    }
-
-    async def on_model_change(self, data, model, is_created, request=None):
-        file = data.get("image")
-
-        if file:
-            self.UPLOAD_PATH.mkdir(parents=True, exist_ok=True)
-
-            ext = Path(file.filename).suffix
-            filename = f"{uuid.uuid4().hex}{ext}"
-            file_path = self.UPLOAD_PATH / filename
-
-            with open(file_path, "wb") as f:
-                shutil.copyfileobj(file.file, f)
-
-            model.image = f"products/{filename}"
-
-            data.pop("image", None)
 
 
 class ReviewAdmin(ModelView, model=Review):

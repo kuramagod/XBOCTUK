@@ -1,7 +1,12 @@
 from decimal import Decimal
 from typing import Annotated
+from pathlib import Path
 from fastapi import Depends
 from sqlmodel import SQLModel, create_engine, Session, Field, Relationship
+
+from fastapi_storages.integrations.sqlalchemy import FileType
+from fastapi_storages import FileSystemStorage
+from sqlalchemy import Column
 
 
 sqlite_file_name = "database.db"
@@ -9,6 +14,9 @@ sqlite_url = f"sqlite:///{sqlite_file_name}"
 
 connection_args = {"check_same_thread": False}
 engine = create_engine(sqlite_url, connect_args=connection_args)
+
+BASE_DIR = Path(__file__).resolve().parent
+storage = FileSystemStorage(path=BASE_DIR / "static" / "images" / "products")
 
 
 def create_dn_and_tables():
@@ -65,7 +73,7 @@ class ProductBase(SQLModel):
     country: str | None = None
     material: str | None = None
     animal_age: str | None = None
-    image: str | None = None
+    image: str | None = Field(sa_column=Column(FileType(storage=storage)))
 
 
 class Product(ProductBase, table=True):
@@ -73,6 +81,12 @@ class Product(ProductBase, table=True):
     price: Decimal  
     category_id: int | None = Field(default=None, foreign_key="category.id")
     category: Category | None = Relationship(back_populates="products")
+
+    @property
+    def image_url(self) -> str | None:
+        if not self.image:
+            return None
+        return f"products/{Path(self.image).name}"
 
     def __str__(self):
         return f"Товар {self.id}"
@@ -88,11 +102,11 @@ class ProductRead(SQLModel):
     id: int
     price: Decimal
     description: str
-    image: str
     brand: str | None
     country: str | None
     material: str | None
     animal_age: str | None
+    image: str
     category: str
 
 
