@@ -36,10 +36,9 @@ admin.add_view(CategoryAdmin)
 admin.add_view(ProductAdmin)
 admin.add_view(ReviewAdmin)
 
-
-top = Path(__file__).resolve().parent
-template_obj = Jinja2Templates(directory=f"{top}/templates")
-app.mount("/static", StaticFiles(directory=f"{top}/static"), name="static")
+BASE_DIR = Path(__file__).resolve().parent
+template_obj = Jinja2Templates(directory=BASE_DIR / "templates")
+app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 
 
 @app.on_event("startup")

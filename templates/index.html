@@ -81,7 +81,7 @@
                 <div class="bestsellers_flex">
                     {% for hit in hit_products %}
                         <div class="product_card"
-                            data-image="{{ url_for('static', path='images/' + hit.image) }}"
+                            data-image="{{ url_for('static', path='images/' + hit.image_url) }}"
                             data-price="{{ hit.price|round() }} ₽"
                             data-description="{{ hit.description }}"
                             data-code="{{ hit.id }}"
@@ -91,7 +91,7 @@
                             data-material="{{ hit.material }}"
                             data-age="{{ hit.animal_age }}"
                         >
-                            <img width="215" height="173" src="{{ url_for('static', path='images/' + hit.image) }}" alt="Изображение товара">
+                            <img width="215" height="173" src="{{ url_for('static', path='images/' + hit.image_url) }}" alt="Изображение товара">
                             <p class="price">{{ hit.price|round() }} ₽</p>
                             <p class="description">{{ hit.description }}</p>
                             <button class="details_button">Подробнее</button>

@@ -1,3 +1,4 @@
+from re import findall
 from typing import Annotated
 from fastapi import APIRouter, HTTPException, status, Query
 from sqlalchemy.exc import IntegrityError
@@ -25,7 +26,8 @@ def read_products(
     results = session.exec(query).all()
     return [
         ProductRead(
-            **product.model_dump(),
+            **product.model_dump(exclude=["image"]),
+            image=product.image_url,
             category=product.category.text
         ) for product in results
     ]
