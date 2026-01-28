@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Хедер
     const burger = document.getElementById('burger');
     const menu = document.getElementById('mobileMenu');
-    let index = 0;
 
     burger.addEventListener('click', () => {
         menu.classList.toggle('active');
@@ -84,6 +83,11 @@ document.addEventListener('DOMContentLoaded', async function () {
         modal.querySelector('#product_age').textContent =`Возраст питомца: ${card.dataset.age}`;
     };
 
+    function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = ''; 
+    }
+
     document.addEventListener('click', (e) => {
         if (!e.target.classList.contains('details_button')) return;
 
@@ -98,9 +102,17 @@ document.addEventListener('DOMContentLoaded', async function () {
         document.body.style.overflow = '';
     });
 
+    document.addEventListener('click', (e) => {
+        if (modal.style.display === 'flex' && 
+            e.target.classList.contains('modal_overlay')) {
+            closeModal();
+        }
+    });
+
     // Слайдер
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
+    let index = 0;
 
     function showSlide(i) {
         slides.forEach(s => s.classList.remove('active'));
