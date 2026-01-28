@@ -1,21 +1,18 @@
 from pathlib import Path
 from random import sample
 
+from fastapi import FastAPI, Request
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from sqlmodel import select
-
 from sqladmin import Admin
+
 from admin.auth import AdminAuth
 from admin.views import CategoryAdmin, ProductAdmin, ReviewAdmin
-
-from fastapi import FastAPI, Request
-from routers import product, review, category, user
-from fastapi.templating import Jinja2Templates
-from fastapi.staticfiles import StaticFiles
-
-from core.security import create_super_user
 from core.config import SECRET_KEY
-
+from core.security import create_super_user
 from database import create_dn_and_tables, SessionDep, Product, engine
+from routers import product, review, category, user
 from seed import base_category_add, base_product_add, base_review_add
 
 

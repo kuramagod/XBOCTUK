@@ -34,14 +34,12 @@ SessionDep = Annotated[Session, Depends(get_session)]
 class TokenData(SQLModel):
     username: str | None = None
 
-
 # Админ
 class User(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     username: str
     hashed_password: str
     is_admin: bool
-
 
 # Категории
 class CategoryBase(SQLModel):
@@ -55,15 +53,6 @@ class Category(CategoryBase, table=True):
     
     def __str__(self):
         return self.text
-
-
-class CategoryCreate(CategoryBase):
-    pass
-
-
-class CategoryUpdate(SQLModel):
-    title: str | None = None
-    text: str | None = None
 
 # Товары
 class ProductBase(SQLModel):
@@ -92,12 +81,6 @@ class Product(ProductBase, table=True):
         return f"Товар {self.id}"
 
 
-class ProductCreate(ProductBase):
-    price: Decimal
-    image: str | None = None
-    category_id: int
-
-
 class ProductRead(SQLModel):
     id: int
     price: Decimal
@@ -108,16 +91,6 @@ class ProductRead(SQLModel):
     animal_age: str | None
     image: str
     category: str
-
-
-class ProductUpdate(SQLModel):
-    price: Decimal | None = None
-    description: str | None = None
-    is_hit: bool | None = None
-    brand: str | None = None
-    country: str | None = None
-    material: str | None = None
-    animal_age: str | None = None
 
 # Отзывы
 class ReviewBase(SQLModel):
@@ -132,9 +105,3 @@ class Review(ReviewBase, table=True):
 
 class ReviewCreate(ReviewBase):
     pass
-
-
-class ReviewUpdate(SQLModel):
-    username: str | None = None
-    email: str | None = None
-    text: str | None = None

@@ -1,24 +1,12 @@
 import jwt
 
 from sqlmodel import select
-from typing import Annotated
 from datetime import timedelta
 from database import User, engine, get_session
-from fastapi import Depends, HTTPException, Request
+from fastapi import Request
 from sqladmin.authentication import AuthenticationBackend
 from core.config import ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY, ALGORITHM
-from core.security import get_current_user, authenticate_user, create_access_token
-
-
-def admin_required(
-    user: Annotated[User, Depends(get_current_user)]
-):
-    if not user.is_admin:
-        raise HTTPException(status_code=403, detail="Admin only")
-    return user
-
-
-AdminDep = Annotated[User, Depends(admin_required)]
+from core.security import authenticate_user, create_access_token
 
 
 class AdminAuth(AuthenticationBackend):
