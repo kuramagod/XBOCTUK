@@ -9,7 +9,7 @@ router = APIRouter(prefix="/review", tags=["review"])
 
 @router.get("/", response_model=list[Review])
 def read_reviews(session: SessionDep) -> Review:
-    return session.exec(select(Review).order_by(Review.id)).all()
+    return session.exec(select(Review).order_by(Review.id.desc())).all()
 
 
 @router.post("/", response_model=Review)

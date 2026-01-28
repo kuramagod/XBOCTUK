@@ -16,7 +16,7 @@
         <div class="container">
             <div class="header_grid">
                 <div class="header_logo">
-                    <img src="{{ url_for('static', path='images/logo.svg') }}" alt="Логотип">
+                    <img src="{{ url_for('static', path='images/main/logo.svg') }}" alt="Логотип">
                     <p>Хвостик</p>
                 </div>
                 
@@ -51,7 +51,7 @@
         <!-- Основное изображение -->
         <section class="main_title">
             <div class="main_image">
-                <img src="{{ url_for('static', path='images/bigmainimage.jpg') }}" alt="Основное изображение">
+                <img src="{{ url_for('static', path='images/main/bigmainimage.jpg') }}" alt="Основное изображение">
             </div>
             <div class="main_content container">
                 <p class="first_info">Семейный магазин товаров для кошек</p>
@@ -64,11 +64,11 @@
             <div class="container">
                 <p class="title">О нас</p>
                 <div class="about_us_grid">
-                    <img class="first_about_image" width="455" height="230" src="{{ url_for('static', path='images/aboutusfirst.jpg') }}" alt="Кошачьи игрушки">
+                    <img class="first_about_image" width="455" height="230" src="{{ url_for('static', path='images/main/aboutusfirst.jpg') }}" alt="Кошачьи игрушки">
                     <p class="first_about_product">Мы предлагаем качественные и удобные товары для кошек, делая заботу о питомцах простой и приятной. 
                         Наша цель — радовать владельцев кошек и их любимцев, сочетая высокое качество и доступные цены.
                     </p>
-                    <img class="second_about_image" width="455" height="230" src="{{ url_for('static', path='images/aboutussecond.jpg') }}" alt="Производство игрушек">
+                    <img class="second_about_image" width="455" height="230" src="{{ url_for('static', path='images/main/aboutussecond.jpg') }}" alt="Производство игрушек">
                     <p class="second_about_product">
                         Наше производство основано на ручной сборке и тщательном контроле качества. 
                         Мы используем безопасные материалы и тестируем каждую модель, чтобы товары служили долго и приносили комфорт вашим питомцам.
@@ -128,28 +128,28 @@
                 <div class="slider">
                     <div class="slides">
                         <div class="slide active">
-                            <img src="{{ url_for('static', path='images/manufacturer1.jpg') }}" alt="Изображение производства">
+                            <img src="{{ url_for('static', path='images/main/manufacturer1.jpg') }}" alt="Изображение производства">
                             <div class="slide_content">
                                 <p>Мы используем безопасные и гипоаллергенные материалы, чтобы ваши кошки чувствовали комфорт каждый день.</p>
                             </div>
                         </div>
 
                         <div class="slide">
-                            <img src="{{ url_for('static', path='images/manufacturer2.jpg') }}" alt="Изображение производства">
+                            <img src="{{ url_for('static', path='images/main/manufacturer2.jpg') }}" alt="Изображение производства">
                             <div class="slide_content">
                                 <p>В работе используем только нетоксичные и гипоаллергенные материалы, подходящие для ежедневного использования.</p>
                             </div>
                         </div>
 
                         <div class="slide">
-                            <img src="{{ url_for('static', path='images/manufacturer3.jpg') }}" alt="Изображение производства">
+                            <img src="{{ url_for('static', path='images/main/manufacturer3.jpg') }}" alt="Изображение производства">
                             <div class="slide_content">
                                 <p>Мы проверяем каждое изделие вручную, чтобы оно было безопасным и долговечным для питомца.</p>
                             </div>
                         </div>
 
                         <div class="slide">
-                            <img src="{{ url_for('static', path='images/manufacturer4.jpg') }}" alt="Изображение производства">
+                            <img src="{{ url_for('static', path='images/main/manufacturer4.jpg') }}" alt="Изображение производства">
                             <div class="slide_content">
                                 <p>Мы создаём товары с любовью, ориентируясь на комфорт, игру и здоровье кошек.</p>
                             </div>
@@ -177,7 +177,7 @@
                     {% for review in reviews %}
                         <div class="review">
                             <div class="quote">
-                                <img src="{{ url_for('static', path='images/quote.svg') }}" alt="Иконка цитаты">
+                                <img src="{{ url_for('static', path='images/main/quote.svg') }}" alt="Иконка цитаты">
                             </div>
                             <p class="review_username">{{ review.username }}</p>
                             <p class="review_text">{{ review.text }}</p>
@@ -210,19 +210,19 @@
                 <p class="title">Контакты</p>
                 <div class="contacts_flex">
                     <div class="contact">
-                        <img src="{{ url_for('static', path='images/phone.svg') }}" alt="Значок контактов">
+                        <img src="{{ url_for('static', path='images/main/phone.svg') }}" alt="Значок контактов">
                         <p>Позвоните нам</p>
                         <p>+8-999-999-99-99</p>
                     </div>
 
                     <div class="contact">
-                        <img src="{{ url_for('static', path='images/phone.svg') }}" alt="Значок почты">
+                        <img src="{{ url_for('static', path='images/main/phone.svg') }}" alt="Значок почты">
                         <p>Напишите нам</p>
                         <p>example@example.com</p>
                     </div>
                     
                     <div class="contact">
-                        <img src="{{ url_for('static', path='images/address.svg') }}" alt="Значок адреса">
+                        <img src="{{ url_for('static', path='images/main/address.svg') }}" alt="Значок адреса">
                         <p>Наш адрес</p>
                         <p>ул. Примерная 7Б</p>
                     </div>
@@ -272,10 +272,10 @@
         <div id="myModal" class="modal_overlay">
             <div class="modal_content">
                 <button class="close_btn">
-                    <img src="{{ url_for('static', path='images/exit.svg') }}" alt="Закрыть">
+                    <img src="{{ url_for('static', path='images/main/exit.svg') }}" alt="Закрыть">
                 </button>
 
-                <img class="modal_image" width="700" height="350" src="{{ url_for('static', path='images/nophoto.jpg') }}" alt="Изображение товара">
+                <img class="modal_image" width="700" height="350" src="{{ url_for('static', path='images/main/nophoto.jpg') }}" alt="Изображение товара">
                 
                 <p class="price_modal">85 ₽</p>
                 <p class="description_modal">Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения</p>

@@ -1,6 +1,8 @@
 import os
 
+import shutil
 from pathlib import Path
+from tempfile import SpooledTemporaryFile
 from fastapi import UploadFile
 from sqlmodel import select
 from database import get_session, Category, Product, Review
@@ -36,17 +38,34 @@ def base_product_add():
     if session.exec(select(Product)).first():
         return None
     
+    
     def create_upload_file(filepath: str) -> UploadFile:
-        filename = os.path.basename(filepath)
-        file = open(filepath, 'rb')
-        return UploadFile(filename=filename, file=file)
+        if not filepath.exists():
+            raise FileNotFoundError(f"Файл {filepath} не найден")
+        
+        spooled_file = SpooledTemporaryFile(max_size=10 * 1024 * 1024)
+        
+        with open(filepath, 'rb') as original_file:
+            shutil.copyfileobj(original_file, spooled_file)
+        
+        spooled_file.seek(0)
+        
+        file_size = os.path.getsize(filepath)
+        
+        upload_file = UploadFile(
+            filename=filepath.name,
+            file=spooled_file,
+            size=file_size
+        )
+        
+        return upload_file
     
     products = [
         # Аптека
         Product(
             price=758,
             description="Капли от блох и гельминтов для кошек KRKA Селафорт 45мг 0.75мл",
-            image=create_upload_file(str(BASE_DIR / "static/images/products/hit2.png")),
+            image=create_upload_file(BASE_DIR / "static/images/products/hit2.png"),
             is_hit=True,
             category_id=1,
             brand="KRKA",
@@ -57,7 +76,7 @@ def base_product_add():
         Product(
             price=591,
             description="Антигельминтик для котят и кошек Elanco Мильбемакс мелких пород 2 таблетки",
-            image=create_upload_file(str(BASE_DIR / "static/images/products/tovar3.jpg")),
+            image=create_upload_file(BASE_DIR / "static/images/products/tovar3.jpg"),
             is_hit=False,
             category_id=1,
             brand="Elanco",
@@ -65,12 +84,23 @@ def base_product_add():
             material="Ветеринарный препарат",
             animal_age="Для котят и мелких кошек"
         ),
+        Product(
+            price=796,
+            description="Антигельминтик для кошек Elanco Дронтал плюс",
+            image=create_upload_file(BASE_DIR / "static/images/products/apteka1.png"),
+            is_hit=False,
+            category_id=1,
+            brand="Elanco",
+            country="Германия",
+            material="Ветеринарный препарат",
+            animal_age="Для взрослых кошек"
+        ),
 
         # Корм
         Product(
             price=85,
             description="Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения",
-            image=create_upload_file(str(BASE_DIR / "static/images/products/hit1.png")),
+            image=create_upload_file(BASE_DIR / "static/images/products/hit1.png"),
             is_hit=True,
             category_id=2,
             brand="Royal Canin",
@@ -81,7 +111,7 @@ def base_product_add():
         Product(
             price=89,
             description="Корм влажный для кошек PRO PLAN MAINTENANCE 85 г с курицей в соусе",
-            image=create_upload_file(str(BASE_DIR / "static/images/products/tovar4.png")),
+            image=create_upload_file(BASE_DIR / "static/images/products/tovar4.png"),
             is_hit=False,
             category_id=2,
             brand="Purina Pro Plan",
@@ -94,7 +124,7 @@ def base_product_add():
         Product(
             price=315,
             description="Пирамидка для кошек Barbaks Ёлочка-трек 2-слойная интерактивная с шариками голубая",
-            image=create_upload_file(str(BASE_DIR / "static/images/products/hit3.jpg")),
+            image=create_upload_file(BASE_DIR / "static/images/products/hit3.jpg"),
             is_hit=True,
             category_id=3,
             brand="Barbaks",
@@ -105,7 +135,7 @@ def base_product_add():
         Product(
             price=195,
             description="Игрушка для кошек Barbaks Мятный шар в пластике на липучке 4.5 см",
-            image=create_upload_file(str(BASE_DIR / "static/images/products/tovar2.jpg")),
+            image=create_upload_file(BASE_DIR / "static/images/products/tovar2.jpg"),
             is_hit=False,
             category_id=3,
             brand="Barbaks",
@@ -118,7 +148,7 @@ def base_product_add():
         Product(
             price=499,
             description="Джемпер для собак и кошек Zoozavr",
-            image=create_upload_file(str(BASE_DIR / "static/images/products/tovar1.jpg")),
+            image=create_upload_file(BASE_DIR / "static/images/products/tovar1.jpg"),
             is_hit=True,
             category_id=4,
             brand="Zoozavr",
@@ -129,7 +159,7 @@ def base_product_add():
         Product(
             price=599,
             description="Жилет для кошек PRADA",
-            image=create_upload_file(str(BASE_DIR / "static/images/products/hit4.jpg")),
+            image=create_upload_file(BASE_DIR / "static/images/products/hit4.jpg"),
             is_hit=False,
             category_id=4,
             brand="PRADA",
