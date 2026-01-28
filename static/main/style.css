@@ -8,6 +8,7 @@
     --form-ph: #FFA57F;
     --bg-btn: #070707;
     --bg-footer: #D59734;
+    --bg-cat: #F78500;
 
     /* z-index */
     --z-base: 1;
@@ -126,17 +127,14 @@ header {
         align-items: stretch;
         column-gap: 15px;
     }
-
     .header_nav {
         display: none;
     }
-
     .burger {
         display: block;
         grid-column: 12 / 13;
         justify-self: end;
     }
-
     .header_logo {
         grid-column: 1 / 11;
     }
@@ -192,7 +190,7 @@ header {
     color: var(--text-second);
 }
 
-/* Мобильная адаптация текста */
+/* Мобильная адаптация основного загаловка */
 @media (max-width: 1060px) {
     .first_info {
         font-size: 16px;
@@ -350,7 +348,7 @@ header {
 }
 
 .catalog_btn {
-    background-color: #F78500;
+    background-color: var(--bg-cat);
     color: var(--text-second);
     border-radius: 20px;
     border: 0;
@@ -378,11 +376,9 @@ header {
         padding-bottom: 10px;
         scrollbar-width: none;
     }
-
     .catalog::-webkit-scrollbar {
         display: none;
     }
-
     .catalog_btn {
         font-size: 14px;
         padding: 6px 12px;
@@ -435,7 +431,7 @@ header {
 }
 
 .slide_content p {
-    color: #fff;
+    color: var(--text-second);
     font-size: 32px;
     max-width: 80%;
     background: rgba(0, 0, 0, 0.7);
@@ -460,7 +456,7 @@ header {
     border: none;
     border-radius: 50%;
     background: rgba(0,0,0,0.6);
-    color: #fff;
+    color: #FFFFFF;
     font-size: 24px;
     cursor: pointer;
 }
@@ -487,7 +483,7 @@ header {
 }
 
 .dot.active {
-    background: #fff;
+    background: #FFFFFF;
 }
 
 /* Мобильная адаптация раздела "Наше производство" */
@@ -496,7 +492,6 @@ header {
         font-size: 14px;
         max-width: 90%;
     }
-
     .slider_btn {
         width: 32px;
         height: 32px;
@@ -533,7 +528,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #000;
+    background-color: #000000;
     width: 70px;
     height: 70px;
     border-radius: 50%;
