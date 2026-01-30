@@ -88,10 +88,21 @@ def base_product_add():
             price=796,
             description="Антигельминтик для кошек Elanco Дронтал плюс",
             image=create_upload_file(BASE_DIR / "static/images/products/apteka1.png"),
-            is_hit=False,
+            is_hit=True,
             category_id=1,
             brand="Elanco",
             country="Германия",
+            material="Ветеринарный препарат",
+            animal_age="Для взрослых кошек"
+        ),
+        Product(
+            price=288,
+            description="Таблетки для кошек и собак Apicenna Миртацен для повышения аппетита 1.88мг 10шт",
+            image=create_upload_file(BASE_DIR / "static/images/products/apteka2.png"),
+            is_hit=False,
+            category_id=1,
+            brand="Apicenna",
+            country="Россия",
             material="Ветеринарный препарат",
             animal_age="Для взрослых кошек"
         ),
@@ -119,6 +130,29 @@ def base_product_add():
             material="Влажный корм",
             animal_age="Для стерилизованных кошек"
         ),
+        Product(
+            price=84,
+            description="Корм для котят AWARD 85гр с индейкой healthy growth",
+            image=create_upload_file(BASE_DIR / "static/images/products/feed1.png"),
+            is_hit=True,
+            category_id=2,
+            brand="AWARD",
+            country="Россия",
+            material="Влажный корм",
+            animal_age="Для всех возрастов"
+        ),
+        Product(
+            price=84,
+            description="Корм влажный для кошек Гурмэ Натуральные рецепты 75г",
+            image=create_upload_file(BASE_DIR / "static/images/products/feed2.png"),
+            is_hit=False,
+            category_id=2,
+            brand="Гурмэ",
+            country="Россия",
+            material="Влажный корм",
+            animal_age="Для всех возрастов"
+        ),
+
 
         # Игрушки
         Product(
@@ -136,6 +170,28 @@ def base_product_add():
             price=195,
             description="Игрушка для кошек Barbaks Мятный шар в пластике на липучке 4.5 см",
             image=create_upload_file(BASE_DIR / "static/images/products/tovar2.jpg"),
+            is_hit=False,
+            category_id=3,
+            brand="Barbaks",
+            country="Китай",
+            material="Пластик, кошачья мята",
+            animal_age="Для всех возрастов"
+        ),
+        Product(
+            price=49,
+            description="Игрушка для кошек Barbaks Рыба Барбус с кошачьей мятой мягкая 19*11см",
+            image=create_upload_file(BASE_DIR / "static/images/products/toys1.png"),
+            is_hit=True,
+            category_id=3,
+            brand="Barbaks",
+            country="Китай",
+            material="Пластик, кошачья мята",
+            animal_age="Для всех возрастов"
+        ),
+        Product(
+            price=89,
+            description="Игрушка для кошек Barbaks Рыба Макрель с кошачьей мятой мягкая 19*4.5см",
+            image=create_upload_file(BASE_DIR / "static/images/products/toys2.png"),
             is_hit=False,
             category_id=3,
             brand="Barbaks",
@@ -164,6 +220,28 @@ def base_product_add():
             category_id=4,
             brand="PRADA",
             country="Италия",
+            material="Текстиль",
+            animal_age="Для взрослых кошек"
+        ),
+        Product(
+            price=399,
+            description="Комбинезон для кошек Зоозавр",
+            image=create_upload_file(BASE_DIR / "static/images/products/cloth1.png"),
+            is_hit=False,
+            category_id=4,
+            brand="Зоозавр",
+            country="Россия",
+            material="Текстиль",
+            animal_age="Для взрослых кошек"
+        ),
+        Product(
+            price=3999,
+            description="Меховая шуба Balenciaga для кошек",
+            image=create_upload_file(BASE_DIR / "static/images/products/cloth2.png"),
+            is_hit=False,
+            category_id=4,
+            brand="Balenciaga",
+            country="Испания",
             material="Текстиль",
             animal_age="Для взрослых кошек"
         ),
