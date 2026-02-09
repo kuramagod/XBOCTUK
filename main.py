@@ -65,3 +65,7 @@ def main_page(
         "categories": categories,
         "hit_products": hit_products
     })
+
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
