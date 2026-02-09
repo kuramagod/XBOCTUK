@@ -1,3 +1,5 @@
+import os
+
 from decimal import Decimal
 from typing import Annotated
 from pathlib import Path
@@ -8,12 +10,14 @@ from fastapi_storages.integrations.sqlalchemy import FileType
 from fastapi_storages import FileSystemStorage
 from sqlalchemy import Column
 
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-sqlite_file_name = "database.db"
-sqlite_url = f"sqlite:///{sqlite_file_name}"
-
-connection_args = {"check_same_thread": False}
-engine = create_engine(sqlite_url, connect_args=connection_args)
+engine = create_engine(
+    DATABASE_URL,
+    connect_args = {"sslmode": "require"},
+    pool_pre_ping=True,
+    pool_recycle=300,
+)
 
 BASE_DIR = Path(__file__).resolve().parent
 storage = FileSystemStorage(path=BASE_DIR / "static" / "images" / "products")
