@@ -238,12 +238,58 @@ def base_product_add():
             price=3999,
             description="Меховая шуба Balenciaga для кошек",
             image=create_upload_file(BASE_DIR / "static/images/products/cloth2.png"),
-            is_hit=False,
+            is_hit=True,
             category_id=4,
             brand="Balenciaga",
             country="Испания",
             material="Текстиль",
             animal_age="Для взрослых кошек"
+        ),
+
+        # Гигена
+        Product(
+            price=1650,
+            description="Наполнитель для кошек Cats White комкующийся с Активированным углем 10л",
+            image=create_upload_file(BASE_DIR / "static/images/products/hygiene1.png"),
+            is_hit=True,
+            category_id=5,
+            brand="Cats White",
+            country="Турция",
+            material="Бентиловая глина",
+            animal_age="Для всех возрастов"
+        ),
+        Product(
+            price=84,
+            description="Совок для кошачьего туалета Triol с круглой ячейкой",
+            image=create_upload_file(BASE_DIR / "static/images/products/hygiene2.png"),
+            is_hit=False,
+            category_id=5,
+            brand="Triol",
+            country="Россия",
+            material="Пластик",
+            animal_age="Для всех возрастов"
+        ),
+        Product(
+            price=479,
+            description="Когтерез для кошек Zolux малый S",
+            image=create_upload_file(BASE_DIR / "static/images/products/hygiene3.png"),
+            is_hit=True,
+            category_id=5,
+            brand="Zolux",
+            country="Китай",
+            material="Пластик, металл",
+            animal_age="Для всех возрастов"
+        ),
+        Product(
+            price=225,
+            description="Шампунь для кошек Animal Play Sweet витаминизированный Вишневый пай 300мл",
+            image=create_upload_file(BASE_DIR / "static/images/products/hygiene4.png"),
+            is_hit=False,
+            category_id=5,
+            brand="Animal Play Sweet",
+            country="Россия",
+            material="Шампунь",
+            animal_age="Для всех возрастов"
         ),
     ]
 
