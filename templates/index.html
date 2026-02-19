@@ -51,7 +51,7 @@
         <!-- Основное изображение -->
         <section class="main_title">
             <div class="main_image">
-                <img src="{{ url_for('static', path='images/main/bigmainimage.jpg') }}" alt="Основное изображение">
+                <img src="{{ url_for('static', path='images/main/bigmainimage.webp') }}" loading="lazy" alt="Основное изображение">
             </div>
             <div class="main_content container">
                 <p class="first_info">Семейный магазин товаров для кошек</p>
@@ -64,11 +64,11 @@
             <div class="container">
                 <p class="title">О нас</p>
                 <div class="about_us_grid">
-                    <img class="first_about_image" width="455" height="230" src="{{ url_for('static', path='images/main/aboutusfirst.jpg') }}" alt="Кошачьи игрушки">
+                    <img class="first_about_image" width="455" height="230" src="{{ url_for('static', path='images/main/aboutusfirst.webp') }}" loading="lazy" alt="Кошачьи игрушки">
                     <p class="first_about_product">Мы предлагаем качественные и удобные товары для кошек, делая заботу о питомцах простой и приятной. 
                         Наша цель — радовать владельцев кошек и их любимцев, сочетая высокое качество и доступные цены.
                     </p>
-                    <img class="second_about_image" width="455" height="230" src="{{ url_for('static', path='images/main/aboutussecond.jpg') }}" alt="Производство игрушек">
+                    <img class="second_about_image" width="455" height="230" src="{{ url_for('static', path='images/main/aboutussecond.webp') }}" loading="lazy" alt="Производство игрушек">
                     <p class="second_about_product">
                         Наше производство основано на ручной сборке и тщательном контроле качества. 
                         Мы используем безопасные материалы и тестируем каждую модель, чтобы товары служили долго и приносили комфорт вашим питомцам.
@@ -128,28 +128,28 @@
                 <div class="slider">
                     <div class="slides">
                         <div class="slide active">
-                            <img src="{{ url_for('static', path='images/main/manufacturer1.jpg') }}" alt="Изображение производства">
+                            <img src="{{ url_for('static', path='images/main/manufacturer1.webp') }}" alt="Изображение производства">
                             <div class="slide_content">
                                 <p>Мы используем безопасные и гипоаллергенные материалы, чтобы ваши кошки чувствовали комфорт каждый день.</p>
                             </div>
                         </div>
 
                         <div class="slide">
-                            <img src="{{ url_for('static', path='images/main/manufacturer2.jpg') }}" alt="Изображение производства">
+                            <img src="{{ url_for('static', path='images/main/manufacturer2.webp') }}" alt="Изображение производства">
                             <div class="slide_content">
                                 <p>В работе используем только нетоксичные и гипоаллергенные материалы, подходящие для ежедневного использования.</p>
                             </div>
                         </div>
 
                         <div class="slide">
-                            <img src="{{ url_for('static', path='images/main/manufacturer3.jpg') }}" alt="Изображение производства">
+                            <img src="{{ url_for('static', path='images/main/manufacturer3.webp') }}" alt="Изображение производства">
                             <div class="slide_content">
                                 <p>Мы проверяем каждое изделие вручную, чтобы оно было безопасным и долговечным для питомца.</p>
                             </div>
                         </div>
 
                         <div class="slide">
-                            <img src="{{ url_for('static', path='images/main/manufacturer4.jpg') }}" alt="Изображение производства">
+                            <img src="{{ url_for('static', path='images/main/manufacturer4.webp') }}" alt="Изображение производства">
                             <div class="slide_content">
                                 <p>Мы создаём товары с любовью, ориентируясь на комфорт, игру и здоровье кошек.</p>
                             </div>
@@ -212,13 +212,13 @@
                     <div class="contact">
                         <img src="{{ url_for('static', path='images/main/phone.svg') }}" alt="Значок контактов">
                         <p>Позвоните нам</p>
-                        <p>+8-999-999-99-99</p>
+                        <a href="tel:+8442345678">+8 (442) 234-56-78</a>
                     </div>
 
                     <div class="contact">
-                        <img src="{{ url_for('static', path='images/main/phone.svg') }}" alt="Значок почты">
+                        <img src="{{ url_for('static', path='images/main/email.svg') }}" alt="Значок почты">
                         <p>Напишите нам</p>
-                        <p>zooxvostik@mail.ru</p>
+                        <a href="mailto:zooxvostik@mail.ru">zooxvostik@mail.ru</a>
                     </div>
                     
                     <div class="contact">
@@ -239,7 +239,7 @@
                     </div>
 
                     <div class="footer_copyright">
-                        <p>Copyright © 2026 Хвостик</p>
+                        <p>Copyright © 2026 {{ copyright_name }}</p>
                     </div>
                     
                     <div class="footer_nav">
@@ -260,8 +260,8 @@
                         <div class="footer_el">
                             <p>Контакты</p>
                             <p>ул. Примерная 7Б</p>
-                            <p>zooxvostik@mail.ru</p>
-                            <p>+8-999-999-99-99</p>
+                            <a href="mailto:zooxvostik@mail.ru">zooxvostik@mail.ru</a>
+                            <a href="tel:+8442345678">+8 (442) 234-56-78</a>
                         </div>
                     </div>
                 </div>

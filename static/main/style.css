@@ -667,6 +667,11 @@ header {
     font-size: 26px;
 }
 
+.contact a { 
+    text-decoration: none;
+    color: var(--text-second);
+}
+
 /* Мобильная адаптация раздела "Контакты" */
 @media (max-width: 1060px) {
     .contact {

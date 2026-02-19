@@ -65,7 +65,7 @@ def base_product_add():
         Product(
             price=758,
             description="Капли от блох и гельминтов для кошек KRKA Селафорт 45мг 0.75мл",
-            image=create_upload_file(BASE_DIR / "static/images/products/hit2.png"),
+            image=create_upload_file(BASE_DIR / "static/images/products/hit2.webp"),
             is_hit=True,
             category_id=1,
             brand="KRKA",
@@ -76,7 +76,7 @@ def base_product_add():
         Product(
             price=591,
             description="Антигельминтик для котят и кошек Elanco Мильбемакс мелких пород 2 таблетки",
-            image=create_upload_file(BASE_DIR / "static/images/products/tovar3.jpg"),
+            image=create_upload_file(BASE_DIR / "static/images/products/tovar3.webp"),
             is_hit=False,
             category_id=1,
             brand="Elanco",
@@ -87,7 +87,7 @@ def base_product_add():
         Product(
             price=796,
             description="Антигельминтик для кошек Elanco Дронтал плюс",
-            image=create_upload_file(BASE_DIR / "static/images/products/apteka1.png"),
+            image=create_upload_file(BASE_DIR / "static/images/products/apteka1.webp"),
             is_hit=True,
             category_id=1,
             brand="Elanco",
@@ -98,7 +98,7 @@ def base_product_add():
         Product(
             price=288,
             description="Таблетки для кошек и собак Apicenna Миртацен для повышения аппетита 1.88мг 10шт",
-            image=create_upload_file(BASE_DIR / "static/images/products/apteka2.png"),
+            image=create_upload_file(BASE_DIR / "static/images/products/apteka2.webp"),
             is_hit=False,
             category_id=1,
             brand="Apicenna",
@@ -111,7 +111,7 @@ def base_product_add():
         Product(
             price=85,
             description="Корм для кошек ROYAL CANIN 85г Gastrointestinal соус при расстройствах пищеварения",
-            image=create_upload_file(BASE_DIR / "static/images/products/hit1.png"),
+            image=create_upload_file(BASE_DIR / "static/images/products/hit1.webp"),
             is_hit=True,
             category_id=2,
             brand="Royal Canin",
@@ -122,7 +122,7 @@ def base_product_add():
         Product(
             price=89,
             description="Корм влажный для кошек PRO PLAN MAINTENANCE 85 г с курицей в соусе",
-            image=create_upload_file(BASE_DIR / "static/images/products/tovar4.png"),
+            image=create_upload_file(BASE_DIR / "static/images/products/tovar4.webp"),
             is_hit=False,
             category_id=2,
             brand="Purina Pro Plan",
@@ -133,7 +133,7 @@ def base_product_add():
         Product(
             price=84,
             description="Корм для котят AWARD 85гр с индейкой healthy growth",
-            image=create_upload_file(BASE_DIR / "static/images/products/feed1.png"),
+            image=create_upload_file(BASE_DIR / "static/images/products/feed1.webp"),
             is_hit=True,
             category_id=2,
             brand="AWARD",
@@ -144,7 +144,7 @@ def base_product_add():
         Product(
             price=84,
             description="Корм влажный для кошек Гурмэ Натуральные рецепты 75г",
-            image=create_upload_file(BASE_DIR / "static/images/products/feed2.png"),
+            image=create_upload_file(BASE_DIR / "static/images/products/feed2.webp"),
             is_hit=False,
             category_id=2,
             brand="Гурмэ",
@@ -158,7 +158,7 @@ def base_product_add():
         Product(
             price=315,
             description="Пирамидка для кошек Barbaks Ёлочка-трек 2-слойная интерактивная с шариками голубая",
-            image=create_upload_file(BASE_DIR / "static/images/products/hit3.jpg"),
+            image=create_upload_file(BASE_DIR / "static/images/products/hit3.webp"),
             is_hit=True,
             category_id=3,
             brand="Barbaks",
@@ -169,7 +169,7 @@ def base_product_add():
         Product(
             price=195,
             description="Игрушка для кошек Barbaks Мятный шар в пластике на липучке 4.5 см",
-            image=create_upload_file(BASE_DIR / "static/images/products/tovar2.jpg"),
+            image=create_upload_file(BASE_DIR / "static/images/products/tovar2.webp"),
             is_hit=False,
             category_id=3,
             brand="Barbaks",
@@ -180,7 +180,7 @@ def base_product_add():
         Product(
             price=49,
             description="Игрушка для кошек Barbaks Рыба Барбус с кошачьей мятой мягкая 19*11см",
-            image=create_upload_file(BASE_DIR / "static/images/products/toys1.png"),
+            image=create_upload_file(BASE_DIR / "static/images/products/toys1.webp"),
             is_hit=True,
             category_id=3,
             brand="Barbaks",
@@ -191,7 +191,7 @@ def base_product_add():
         Product(
             price=89,
             description="Игрушка для кошек Barbaks Рыба Макрель с кошачьей мятой мягкая 19*4.5см",
-            image=create_upload_file(BASE_DIR / "static/images/products/toys2.png"),
+            image=create_upload_file(BASE_DIR / "static/images/products/toys2.webp"),
             is_hit=False,
             category_id=3,
             brand="Barbaks",
@@ -204,7 +204,7 @@ def base_product_add():
         Product(
             price=499,
             description="Джемпер для собак и кошек Zoozavr",
-            image=create_upload_file(BASE_DIR / "static/images/products/tovar1.jpg"),
+            image=create_upload_file(BASE_DIR / "static/images/products/tovar1.webp"),
             is_hit=True,
             category_id=4,
             brand="Zoozavr",
@@ -215,7 +215,7 @@ def base_product_add():
         Product(
             price=599,
             description="Жилет для кошек PRADA",
-            image=create_upload_file(BASE_DIR / "static/images/products/hit4.jpg"),
+            image=create_upload_file(BASE_DIR / "static/images/products/hit4.webp"),
             is_hit=False,
             category_id=4,
             brand="PRADA",
@@ -226,7 +226,7 @@ def base_product_add():
         Product(
             price=399,
             description="Комбинезон для кошек Зоозавр",
-            image=create_upload_file(BASE_DIR / "static/images/products/cloth1.png"),
+            image=create_upload_file(BASE_DIR / "static/images/products/cloth1.webp"),
             is_hit=False,
             category_id=4,
             brand="Зоозавр",
@@ -237,7 +237,7 @@ def base_product_add():
         Product(
             price=3999,
             description="Меховая шуба Balenciaga для кошек",
-            image=create_upload_file(BASE_DIR / "static/images/products/cloth2.png"),
+            image=create_upload_file(BASE_DIR / "static/images/products/cloth2.webp"),
             is_hit=True,
             category_id=4,
             brand="Balenciaga",
@@ -250,7 +250,7 @@ def base_product_add():
         Product(
             price=1650,
             description="Наполнитель для кошек Cats White комкующийся с Активированным углем 10л",
-            image=create_upload_file(BASE_DIR / "static/images/products/hygiene1.png"),
+            image=create_upload_file(BASE_DIR / "static/images/products/hygiene1.webp"),
             is_hit=True,
             category_id=5,
             brand="Cats White",
@@ -261,7 +261,7 @@ def base_product_add():
         Product(
             price=84,
             description="Совок для кошачьего туалета Triol с круглой ячейкой",
-            image=create_upload_file(BASE_DIR / "static/images/products/hygiene2.png"),
+            image=create_upload_file(BASE_DIR / "static/images/products/hygiene2.webp"),
             is_hit=False,
             category_id=5,
             brand="Triol",
@@ -272,7 +272,7 @@ def base_product_add():
         Product(
             price=479,
             description="Когтерез для кошек Zolux малый S",
-            image=create_upload_file(BASE_DIR / "static/images/products/hygiene3.png"),
+            image=create_upload_file(BASE_DIR / "static/images/products/hygiene3.webp"),
             is_hit=True,
             category_id=5,
             brand="Zolux",
@@ -283,7 +283,7 @@ def base_product_add():
         Product(
             price=225,
             description="Шампунь для кошек Animal Play Sweet витаминизированный Вишневый пай 300мл",
-            image=create_upload_file(BASE_DIR / "static/images/products/hygiene4.png"),
+            image=create_upload_file(BASE_DIR / "static/images/products/hygiene4.webp"),
             is_hit=False,
             category_id=5,
             brand="Animal Play Sweet",

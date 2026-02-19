@@ -9,7 +9,7 @@ from sqladmin import Admin
 
 from admin.auth import AdminAuth
 from admin.views import CategoryAdmin, ProductAdmin, ReviewAdmin
-from core.config import SECRET_KEY
+from core.config import SECRET_KEY, COPYRIGHT_NAME
 from core.security import create_super_user
 from database import create_dn_and_tables, SessionDep, Product, engine
 from routers import product, review, category, user
@@ -63,8 +63,10 @@ def main_page(
         "request": request, 
         "reviews": reviews, 
         "categories": categories,
-        "hit_products": hit_products
+        "hit_products": hit_products,
+        "copyright_name": COPYRIGHT_NAME
     })
+
 
 @app.get("/health")
 def health_check():
