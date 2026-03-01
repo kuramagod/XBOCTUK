@@ -166,13 +166,17 @@ API документация (Swagger): `http://localhost:8000/docs`
 
 ## 🎨 Дизайн
 
-![Главная страница]()
+### Сайт
 
-![Админ-панель]()
+![Главная страница](screenshots/herosection.png)
 
-![Swagger UI]()
+### Админ панель
 
-[Здесь вставить скриншот админ-панели]
+![Админ-панель](screenshots/adminpanel.png)
+
+### Документация Swagger UI
+
+![Swagger UI](screenshots/docs.png)
 
 [Макет в Figma](https://www.figma.com/design/r1lidM8Qpm4KNJwBgNdLLI/csite?node-id=55-54&p=f&t=osOdHwBi8FuDXtkZ-0)
 
