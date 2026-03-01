@@ -66,8 +66,3 @@ def main_page(
         "hit_products": hit_products,
         "copyright_name": COPYRIGHT_NAME
     })
-
-
-@app.get("/health")
-def health_check():
-    return {"status": "ok"}
