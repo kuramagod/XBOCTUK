@@ -11,14 +11,25 @@ from fastapi_storages import FileSystemStorage
 from sqlalchemy import Column
 
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+# Локальная база данных
 
-engine = create_engine(
-    DATABASE_URL,
-    connect_args = {"sslmode": "require"},
-    pool_pre_ping=True,
-    pool_recycle=300,
-)
+sqlite_file_name = "database.db"
+sqlite_url = f"sqlite:///{sqlite_file_name}"
+
+connection_args = {"check_same_thread": False}
+engine = create_engine(sqlite_url, connect_args=connection_args)
+
+
+# Подключение к облачной базе данных
+
+# DATABASE_URL = os.getenv("DATABASE_URL")
+
+# engine = create_engine(
+#     DATABASE_URL,
+#     connect_args = {"sslmode": "require"},
+#     pool_pre_ping=True,
+#     pool_recycle=300,
+# )
 
 BASE_DIR = Path(__file__).resolve().parent
 storage = FileSystemStorage(path=BASE_DIR / "static" / "images" / "products")
