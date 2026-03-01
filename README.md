@@ -11,6 +11,16 @@
 ## 🛠 Технологический стек
 
 ### Backend
+
+![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![SQLModel](https://img.shields.io/badge/SQLModel-0.0.16+-DE1F26?style=for-the-badge&logo=sqlalchemy&logoColor=white)
+![SQLAdmin](https://img.shields.io/badge/SQLAdmin-0.16+-4B8BBE?style=for-the-badge&logo=python&logoColor=white)
+![Pydantic](https://img.shields.io/badge/Pydantic-2.0+-E92063?style=for-the-badge&logo=pydantic&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-Auth-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+![Passlib](https://img.shields.io/badge/Passlib-bcrypt-4B8BBE?style=for-the-badge&logo=python&logoColor=white)
+![Jinja2](https://img.shields.io/badge/Jinja2-3.1+-B41717?style=for-the-badge&logo=jinja&logoColor=white)
+
 - **FastAPI** — современный async веб-фреймворк
 - **SQLModel** — ORM для работы с БД (поддержка любых реляционных СУБД)
 - **SQLAdmin** — административная панель
@@ -21,12 +31,27 @@
 - **Jinja2** — шаблонизация HTML
 
 ### Frontend
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+
 - **HTML/CSS/JavaScript** (Vanilla JS)
 - **Figma** — разработка дизайн-макета
 - Адаптивная верстка
 
 ### Database
+
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Ready-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-Ready-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+
 - **SQLite** (в разработке) — легко заменяется на PostgreSQL/MySQL благодаря SQLModel
+
+### Tools & Environment
+![Uvicorn](https://img.shields.io/badge/Uvicorn-ASGI-499848?style=for-the-badge&logo=gunicorn&logoColor=white)
+![Python-dotenv](https://img.shields.io/badge/.env-Config-ECD53F?style=for-the-badge&logo=dotenv&logoColor=black)
 
 ## ✨ Функциональность
 
